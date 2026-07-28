@@ -70,8 +70,23 @@ p{ margin: 0 0 1em; color: var(--charcoal-mid); }
 .btn-outline:hover{ background: var(--charcoal); color: var(--apricot); }
 .btn-ghost{ background: transparent; color: var(--charcoal); font-weight:600; text-decoration: underline; padding: 1rem .5rem; }
 
+/* ===== Header + Hero: un solo degradado continuo ===== */
+.top-wrap{
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #FFFEEC 0%, #EDE9FF 65%, #FFFEEC 100%);
+}
+.top-wrap .hero-blob-1{
+  position:absolute; top:-180px; right:-160px; width:620px; height:620px; border-radius:50%;
+  background:radial-gradient(circle, rgba(202,196,38,0.12) 0%, transparent 70%); z-index:0;
+}
+.top-wrap .hero-blob-2{
+  position:absolute; bottom:-100px; left:-120px; width:500px; height:500px; border-radius:50%;
+  background:radial-gradient(circle, rgba(188,180,255,0.2) 0%, transparent 70%); z-index:0;
+}
+
 /* ===== Header ===== */
 .site-header{
+  position: relative; z-index: 1;
   display:flex; align-items:center; justify-content:space-between;
   padding: 1.25rem 5%;
   max-width: 1200px; margin: 0 auto;
@@ -81,22 +96,11 @@ p{ margin: 0 0 1em; color: var(--charcoal-mid); }
 .ig-link{ font-size:.85rem; color: var(--text-muted); font-weight:600; }
 
 /* ===== Hero ===== */
-.hero{
-  position: relative; overflow: hidden;
-  background: linear-gradient(135deg, #FFFEEC 0%, #EDE9FF 55%, #FFFEEC 100%);
-}
-.hero-blob-1{
-  position:absolute; top:-180px; right:-160px; width:620px; height:620px; border-radius:50%;
-  background:radial-gradient(circle, rgba(202,196,38,0.12) 0%, transparent 70%); z-index:0;
-}
-.hero-blob-2{
-  position:absolute; bottom:-100px; left:-120px; width:500px; height:500px; border-radius:50%;
-  background:radial-gradient(circle, rgba(188,180,255,0.2) 0%, transparent 70%); z-index:0;
-}
+.hero{ position: relative; }
 .hero-inner{
   position: relative; z-index:1;
   max-width: 1200px; margin: 0 auto;
-  padding: 3rem 5% 5rem;
+  padding: 2rem 5% 5rem;
   display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center;
 }
 .hero-badge{
