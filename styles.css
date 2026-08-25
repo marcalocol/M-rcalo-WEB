@@ -175,7 +175,7 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 /* ===== Planes ===== */
 .plans-section{ text-align: center; }
 .plans-grid{
-  display:grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem;
+  display:grid; grid-template-columns: repeat(3,1fr) 0.8fr; gap: 1.25rem;
   margin-top: 3rem; text-align:left;
 }
 .plan-card{
@@ -220,24 +220,25 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 .plan-card .btn{ text-align:center; justify-content:center; margin-top: auto; }
 .plans-footnote{ text-align:center; margin-top: 2.5rem; color: var(--text-muted); }
 
-/* ===== Estudio de viabilidad exprés ===== */
-.viability-section{ text-align:center; }
-.viability-card{
-  max-width: 460px; margin: 3rem auto 0; text-align:left;
-  background: var(--apricot);
-  border: 2px solid var(--lavender);
-  border-radius: 18px;
-  padding: 2.25rem 1.75rem 1.75rem;
-  position: relative; overflow: hidden;
-  transition: transform .3s ease, box-shadow .3s ease;
+/* ===== Estudio de viabilidad (mini-card dentro de plans-grid) ===== */
+.plan-card.viability-mini{
+  background: var(--apricot-dark);
+  border: 1.5px dashed var(--lavender-mid);
+  padding: 1.75rem 1.4rem 1.4rem;
 }
-.viability-card::before{
-  content:''; position:absolute; top:0; left:0; right:0; height:4px;
-  background: linear-gradient(90deg, var(--lavender), var(--gold-green));
+.plan-card.viability-mini:hover{ transform: translateY(-6px); box-shadow: 0 20px 60px rgba(34,34,35,0.1); }
+.viability-mini-tag{
+  font-size: .68rem; font-weight:800; text-transform:uppercase; letter-spacing:1px;
+  color: var(--lavender-dark); margin: 0 0 .8rem;
 }
-.viability-card:hover{ transform: translateY(-6px); box-shadow: 0 20px 60px rgba(34,34,35,0.12); }
-.viability-card h3{ font-size: 1.25rem; }
-.viability-card .btn{ display:flex; text-align:center; justify-content:center; margin-top: 1.25rem; width: 100%; }
+.plan-card.viability-mini .plan-icon{ width:40px; height:40px; font-size:1.1rem; background: rgba(188,180,255,0.25); }
+.plan-card.viability-mini h3{ font-size: 1.05rem; }
+.plan-card.viability-mini .plan-desc{ font-size: .82rem; }
+.plan-card.viability-mini .price{ font-size: 1.7rem; }
+.plan-card.viability-mini .rate-note{ font-size: .74rem; padding: .55rem .7rem; }
+.plan-card.viability-mini .feature-list li{ font-size: .8rem; padding: .45rem 0; }
+.plan-card.viability-mini .plan-note{ font-size: .76rem; }
+.plan-card.viability-mini .btn{ font-size: .82rem; padding: .8rem 1.4rem; }
 
 /* ===== Feature grid (Antes de comenzar) - 2 columnas como el original ===== */
 .edu-alert{
@@ -366,6 +367,9 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 1100px){
+  .plans-grid{ grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px){
   .hero-inner{ grid-template-columns: 1fr; }
   .plans-grid{ grid-template-columns: 1fr; }
