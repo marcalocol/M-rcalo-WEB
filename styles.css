@@ -220,6 +220,25 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 .plan-card .btn{ text-align:center; justify-content:center; margin-top: auto; }
 .plans-footnote{ text-align:center; margin-top: 2.5rem; color: var(--text-muted); }
 
+/* ===== Estudio de viabilidad exprés ===== */
+.viability-section{ text-align:center; }
+.viability-card{
+  max-width: 460px; margin: 3rem auto 0; text-align:left;
+  background: var(--apricot);
+  border: 2px solid var(--lavender);
+  border-radius: 18px;
+  padding: 2.25rem 1.75rem 1.75rem;
+  position: relative; overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.viability-card::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background: linear-gradient(90deg, var(--lavender), var(--gold-green));
+}
+.viability-card:hover{ transform: translateY(-6px); box-shadow: 0 20px 60px rgba(34,34,35,0.12); }
+.viability-card h3{ font-size: 1.25rem; }
+.viability-card .btn{ display:flex; text-align:center; justify-content:center; margin-top: 1.25rem; width: 100%; }
+
 /* ===== Feature grid (Antes de comenzar) - 2 columnas como el original ===== */
 .edu-alert{
   background: rgba(188,180,255,0.2); border-left: 4px solid var(--lavender);
@@ -302,6 +321,23 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 .quote-form select option{ background: var(--charcoal); }
 .quote-form input:focus, .quote-form select:focus, .quote-form textarea:focus{ outline:none; border-color: var(--gold-green); }
 .quote-form button{ margin-top: .5rem; justify-content:center; }
+
+/* ===== FAQ ===== */
+.faq-list{ max-width: 760px; margin: 2.5rem auto 0; display:flex; flex-direction:column; gap: .75rem; }
+.faq-item{
+  background: var(--apricot); border: 1px solid rgba(202,196,38,0.15);
+  border-radius: 12px; padding: 1.1rem 1.4rem;
+}
+.faq-item summary{
+  cursor: pointer; font-weight: 700; color: var(--charcoal);
+  font-family: var(--font-display); list-style: none; position: relative; padding-right: 2rem;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary::after{
+  content: '+'; position: absolute; right: 0; top: 0; font-size: 1.3rem; color: var(--lavender-dark);
+}
+.faq-item[open] summary::after{ content: '–'; }
+.faq-item p{ margin-top: .9rem; margin-bottom: 0; font-size: .92rem; }
 
 /* ===== Footer ===== */
 .site-footer{
