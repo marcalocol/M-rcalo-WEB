@@ -236,7 +236,7 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 .plan-card.viability-mini .plan-desc{ font-size: .82rem; }
 .plan-card.viability-mini .price{ font-size: 1.7rem; }
 .plan-card.viability-mini .rate-note{ font-size: .74rem; padding: .55rem .7rem; }
-.plan-card.viability-mini .feature-list li{ font-size: .8rem; padding: .45rem 0; }
+.plan-card.viability-mini .feature-list li{ font-size: .8rem; padding: .5rem 0 .5rem 1.35rem; line-height: 1.4; }
 .plan-card.viability-mini .plan-note{ font-size: .76rem; }
 .plan-card.viability-mini .btn{ font-size: .82rem; padding: .8rem 1.4rem; }
 
