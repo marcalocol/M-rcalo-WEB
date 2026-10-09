@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Buscador fonético de marcas gratis | Colombia | Márcalo</title>
+<meta name="description" content="¿Tu marca ya existe en Colombia? Busca gratis tu nombre y sus variaciones fonéticas. Te enviamos las coincidencias en la SIC por WhatsApp." />
+<link rel="icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== HEADER + BUSCADOR ===== -->
+<div class="top-wrap">
+<header class="site-header">
+  <a href="/" class="logo">
+    <img src="images/logo.png" alt="Márcalo" />
+  </a>
+  <nav class="nav">
+    <a href="/buscador.html" class="nav-search" aria-current="page">🔍 Buscador fonético de marcas</a>
+    <a href="/#mc-planes">Planes</a>
+  </nav>
+  <a href="https://instagram.com/marcalo_col" class="ig-link" target="_blank" rel="noopener">@marcalo_col</a>
+</header>
+
+<section class="hero bf-hero">
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+  <div class="bf-hero-inner">
+    <p class="hero-badge">Gratis · Marcas en Colombia</p>
+    <h1>¿Tu marca <span class="highlight">ya existe</span>? <span class="highlight-lav">Búscala gratis.</span></h1>
+    <p class="hero-sub center">La Superintendencia no solo niega marcas idénticas: también las que <strong>suenan</strong> parecido. Escribe tu nombre y te mostramos todas las variaciones que hay que revisar.</p>
+
+    <form id="bf-form" class="bf-form" role="search">
+      <label for="bf-marca" class="sr-only">Nombre de tu marca</label>
+      <input id="bf-marca" name="marca" type="text" placeholder="Escribe el nombre de tu marca" autocomplete="off" maxlength="60" required />
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    <p class="bf-ejemplos">Prueba con:
+      <button type="button" data-ejemplo="Kafé Luna">Kafé Luna</button>
+      <button type="button" data-ejemplo="Vivero Hogar">Vivero Hogar</button>
+      <button type="button" data-ejemplo="Quinta Esencia">Quinta Esencia</button>
+    </p>
+  </div>
+</section>
+</div>
+
+<!-- ===== RESULTADOS ===== -->
+<section id="bf-resultados" class="section bf-resultados" hidden>
+  <div class="bf-grid">
+
+    <div class="bf-panel">
+      <p class="eyebrow">Tu búsqueda</p>
+      <h2 class="bf-titulo"><span id="bf-nombre-buscado"></span></h2>
+      <p class="bf-sonido">Para la Superintendencia se escucha como <strong id="bf-clave"></strong></p>
+      <p class="bf-resumen">Vamos a revisar <strong id="bf-total"></strong> variaciones en la base de marcas de la SIC:</p>
+
+      <div class="bf-grupo">
+        <h4>Término exacto</h4>
+        <div id="bf-chips-exacta" class="bf-chips"></div>
+      </div>
+      <div class="bf-grupo" id="bf-grupo-foneticas">
+        <h4>Suenan igual</h4>
+        <p class="bf-ayuda">Se escriben distinto pero se pronuncian igual. Para la SIC pueden generar confusión.</p>
+        <div id="bf-chips-foneticas" class="bf-chips"></div>
+      </div>
+      <div class="bf-grupo" id="bf-grupo-escritura">
+        <h4>Variaciones de escritura</h4>
+        <p class="bf-ayuda">Sin espacios, con guion o en plural.</p>
+        <div id="bf-chips-escritura" class="bf-chips"></div>
+      </div>
+
+      <div class="edu-alert bf-alerta">
+        Una marca puede ser negada aunque nadie tenga tu nombre exacto. La SIC compara cómo se <strong>escribe</strong>, cómo <strong>suena</strong> y qué <strong>significa</strong>, dentro de los productos o servicios que ofreces.
+      </div>
+    </div>
+
+    <div class="bf-lado">
+      <form id="bf-lead" class="quote-form bf-lead">
+        <p class="bf-lead-tag">Paso final · Gratis</p>
+        <h3>Recibe las coincidencias por WhatsApp</h3>
+        <p class="bf-lead-sub">Revisamos estas variaciones en la SIC y te enviamos las marcas similares que encontremos, sin costo.</p>
+        <label>Nombre
+          <input type="text" name="nombre" required />
+        </label>
+        <label>WhatsApp
+          <input type="tel" name="whatsapp" required />
+        </label>
+        <label>¿A qué se dedica tu negocio?
+          <input type="text" name="actividad" placeholder="Ej. cafetería, ropa deportiva, software" />
+        </label>
+        <label class="bf-check">
+          <input type="checkbox" name="autorizo" required />
+          <span>Autorizo el tratamiento de mis datos según la <a href="/politica-de-tratamiento-de-datos.html" target="_blank" rel="noopener">política de datos</a>.</span>
+        </label>
+        <button type="submit" class="btn btn-primary">Quiero mis resultados gratis →</button>
+      </form>
+
+      <div id="bf-gracias" class="bf-gracias" hidden>
+        <p class="bf-lead-tag">¡Listo! ✓</p>
+        <h3>Te escribimos pronto con tus resultados</h3>
+        <p>Si WhatsApp no se abrió, <a href="https://wa.me/573009574511" target="_blank" rel="noopener">escríbenos aquí</a>.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== Siguientes pasos (venta) ===== -->
+  <div class="bf-upsell">
+    <p class="eyebrow center">Siguiente paso</p>
+    <h2 class="center">Saber qué existe no es lo mismo que saber si puedes registrar.</h2>
+    <p class="section-sub center">El buscador te muestra qué hay que revisar. Nosotros te decimos qué tan probable es que tu marca sea aprobada y cómo protegerla.</p>
+
+    <div class="bf-upsell-grid">
+      <article class="plan-card viability-mini">
+        <p class="viability-mini-tag">Recomendado para empezar</p>
+        <div class="plan-icon">🔍</div>
+        <h3>Estudio de viabilidad</h3>
+        <p class="plan-desc">Análisis de las coincidencias, probabilidad de registro explicada sin jerga legal. Hasta 3 nombres.</p>
+        <p class="price">$285.000 <span>Entrega en 24 horas hábiles · Se descuenta si continúas</span></p>
+        <a class="btn btn-outline" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20quiero%20el%20estudio%20de%20viabilidad%20de%20mi%20marca" target="_blank" rel="noopener">Quiero mi estudio</a>
+      </article>
+      <article class="plan-card featured">
+        <span class="badge-popular">Popular</span>
+        <div class="plan-icon">⚡</div>
+        <h3>Lo hacemos por ti, hasta la solicitud</h3>
+        <p class="plan-desc">Asesoría de 1 hora, estudio de viabilidad y estrategia, y radicamos tu solicitud ante la SIC.</p>
+        <p class="price">$975.000 <span>Pago único + tasa SIC</span></p>
+        <a class="btn btn-primary" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20me%20interesa%20el%20plan%20Lo%20hacemos%20por%20ti" target="_blank" rel="noopener">Elegir este plan</a>
+      </article>
+      <article class="plan-card plan-3">
+        <div class="plan-icon">🛡️</div>
+        <h3>Lo hacemos todo, de inicio a fin</h3>
+        <p class="plan-desc">Representación legal, seguimiento activo y recurso de apelación incluido si la marca es negada.</p>
+        <p class="price">$1.820.000 <span>Pago único o 3 cuotas + tasa SIC</span></p>
+        <a class="btn btn-outline" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20me%20interesa%20el%20plan%20completo" target="_blank" rel="noopener">Elegir este plan</a>
+      </article>
+    </div>
+    <p class="plans-footnote"><a href="/#mc-planes">Ver todos los planes y comparar →</a></p>
+  </div>
+</section>
+
+<!-- ===== CÓMO FUNCIONA ===== -->
+<section class="section">
+  <p class="eyebrow center">Cómo funciona</p>
+  <h2 class="center">Tres pasos, sin costo</h2>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Escribe tu marca</h4>
+      <p>Generamos al instante las variaciones fonéticas y de escritura que la Superintendencia podría considerar similares.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Revisamos la base de la SIC</h4>
+      <p>Nuestro equipo busca el término exacto y cada variación en el sistema de propiedad industrial de la Superintendencia.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Recibe las coincidencias</h4>
+      <p>Te enviamos por WhatsApp las marcas similares que encontremos, para que decidas el siguiente paso con información.</p>
+    </div>
+  </div>
+  <p class="bf-disclaimer center">Esta búsqueda es orientativa y gratuita. No reemplaza un estudio de viabilidad: no evalúa logos, clases de productos o servicios ni similitud conceptual.</p>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-brand">
+    <p class="footer-name">márcalo<span>_</span>col</p>
+    <p class="footer-tagline">Registro de marca en Colombia con acompañamiento real, planes claros y cero costos ocultos.</p>
+    <a href="https://instagram.com/marcalo_col" target="_blank" rel="noopener">@marcalo_col</a>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal-title">Legal</p>
+    <a href="/terminos-y-condiciones.html">Términos y condiciones</a>
+    <a href="/politica-de-tratamiento-de-datos.html">Política de tratamiento de datos personales</a>
+  </div>
+  <p class="footer-copy">© 2025 márcalo_col · Todos los derechos reservados</p>
+</footer>
+
+<a class="floating-whatsapp" href="https://wa.me/573009574511?text=Hola%2C%20quiero%20información%20sobre%20registro%20de%20marca" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  💬
+</a>
+
+<script src="buscador.js"></script>
+</body>
+</html>
