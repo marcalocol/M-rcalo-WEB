@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Buscador fonético de marcas gratis | Colombia | Márcalo</title>
-<meta name="description" content="¿Tu marca ya existe en Colombia? Busca gratis tu nombre y sus variaciones fonéticas. Te enviamos las coincidencias en la SIC por WhatsApp." />
+<title>Buscador fonético de marcas | Búsqueda express | Márcalo</title>
+<meta name="description" content="¿Existe una marca igual o parecida a la tuya en Colombia? Mira gratis sus variaciones fonéticas y recibe la lista de coincidencias en la Superintendencia con la Búsqueda express." />
 <link rel="icon" href="/favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
   </a>
   <nav class="nav">
     <a href="/buscador.html" class="nav-search" aria-current="page">🔍 Buscador fonético de marcas</a>
+    <a href="/#como-funciona" class="nav-hide-sm">Cómo funciona</a>
     <a href="/#mc-planes">Planes</a>
   </nav>
   <a href="https://instagram.com/marcalo_col" class="ig-link" target="_blank" rel="noopener">@marcalo_col</a>
@@ -29,9 +30,9 @@
   <div class="hero-blob-1"></div>
   <div class="hero-blob-2"></div>
   <div class="bf-hero-inner">
-    <p class="hero-badge">Gratis · Marcas en Colombia</p>
-    <h1>¿Tu marca <span class="highlight">ya existe</span>? <span class="highlight-lav">Búscala gratis.</span></h1>
-    <p class="hero-sub center">La Superintendencia no solo niega marcas idénticas: también las que <strong>suenan</strong> parecido. Escribe tu nombre y te mostramos todas las variaciones que hay que revisar.</p>
+    <p class="hero-badge">Paso 1 · Búsqueda express</p>
+    <h1>¿Existe una marca <span class="highlight">igual o parecida</span> a la tuya? <span class="highlight-lav">Salgamos de la duda.</span></h1>
+    <p class="hero-sub center">Una marca puede chocar con otra aunque no sea idéntica: basta con que se escriba o <strong>suene</strong> parecido. Escribe tu marca y mira gratis todas las versiones que hay que revisar.</p>
 
     <form id="bf-form" class="bf-form" role="search">
       <label for="bf-marca" class="sr-only">Nombre de tu marca</label>
@@ -54,16 +55,16 @@
     <div class="bf-panel">
       <p class="eyebrow">Tu búsqueda</p>
       <h2 class="bf-titulo"><span id="bf-nombre-buscado"></span></h2>
-      <p class="bf-sonido">Para la Superintendencia se escucha como <strong id="bf-clave"></strong></p>
-      <p class="bf-resumen">Vamos a revisar <strong id="bf-total"></strong> variaciones en la base de marcas de la SIC:</p>
+      <p class="bf-sonido">Así suena tu marca: <strong id="bf-clave"></strong></p>
+      <p class="bf-resumen">Encontramos <strong id="bf-total"></strong> versiones que hay que buscar en la Superintendencia:</p>
 
       <div class="bf-grupo">
-        <h4>Término exacto</h4>
+        <h4>Tal como la escribiste</h4>
         <div id="bf-chips-exacta" class="bf-chips"></div>
       </div>
       <div class="bf-grupo" id="bf-grupo-foneticas">
         <h4>Suenan igual</h4>
-        <p class="bf-ayuda">Se escriben distinto pero se pronuncian igual. Para la SIC pueden generar confusión.</p>
+        <p class="bf-ayuda">Se escriben distinto pero se pronuncian igual. Un cliente podría confundirlas.</p>
         <div id="bf-chips-foneticas" class="bf-chips"></div>
       </div>
       <div class="bf-grupo" id="bf-grupo-escritura">
@@ -73,15 +74,16 @@
       </div>
 
       <div class="edu-alert bf-alerta">
-        Una marca puede ser negada aunque nadie tenga tu nombre exacto. La SIC compara cómo se <strong>escribe</strong>, cómo <strong>suena</strong> y qué <strong>significa</strong>, dentro de los productos o servicios que ofreces.
+        Por eso no basta con buscar tu nombre exacto: la Superintendencia compara cómo se <strong>escribe</strong>, cómo <strong>suena</strong> y qué <strong>significa</strong> una marca frente a las que ya existen.
       </div>
     </div>
 
     <div class="bf-lado">
       <form id="bf-lead" class="quote-form bf-lead">
-        <p class="bf-lead-tag">Paso final · Gratis</p>
-        <h3>Recibe las coincidencias por WhatsApp</h3>
-        <p class="bf-lead-sub">Revisamos estas variaciones en la SIC y te enviamos las marcas similares que encontremos, sin costo.</p>
+        <p class="bf-lead-tag">Búsqueda express · $120.000</p>
+        <h3>Recibe la lista de marcas iguales o parecidas</h3>
+        <p class="bf-lead-sub">Buscamos cada una de estas versiones en la base de la Superintendencia y te enviamos por WhatsApp las marcas que encontremos.</p>
+        <p class="bf-lead-discount">💡 Si en los siguientes 30 días tomas otro de nuestros servicios, te descontamos estos $120.000.</p>
         <label>Nombre
           <input type="text" name="nombre" required />
         </label>
@@ -95,12 +97,12 @@
           <input type="checkbox" name="autorizo" required />
           <span>Autorizo el tratamiento de mis datos según la <a href="/politica-de-tratamiento-de-datos.html" target="_blank" rel="noopener">política de datos</a>.</span>
         </label>
-        <button type="submit" class="btn btn-primary">Quiero mis resultados gratis →</button>
+        <button type="submit" class="btn btn-primary">Solicitar mi Búsqueda express →</button>
       </form>
 
       <div id="bf-gracias" class="bf-gracias" hidden>
         <p class="bf-lead-tag">¡Listo! ✓</p>
-        <h3>Te escribimos pronto con tus resultados</h3>
+        <h3>Te escribimos para confirmar el pago y empezar tu búsqueda</h3>
         <p>Si WhatsApp no se abrió, <a href="https://wa.me/573009574511" target="_blank" rel="noopener">escríbenos aquí</a>.</p>
       </div>
     </div>
@@ -109,61 +111,60 @@
 
   <!-- ===== Siguientes pasos (venta) ===== -->
   <div class="bf-upsell">
-    <p class="eyebrow center">Siguiente paso</p>
-    <h2 class="center">Saber qué existe no es lo mismo que saber si puedes registrar.</h2>
-    <p class="section-sub center">El buscador te muestra qué hay que revisar. Nosotros te decimos qué tan probable es que tu marca sea aprobada y cómo protegerla.</p>
+    <p class="eyebrow center">Paso 2 · Entiende tu caso</p>
+    <h2 class="center">Saber qué marcas existen no es lo mismo que saber si puedes registrar la tuya.</h2>
+    <p class="section-sub center">La Búsqueda express es una lista, no un análisis. Si quieres saber qué significa para tu marca y cuál es la mejor forma de protegerla:</p>
 
     <div class="bf-upsell-grid">
-      <article class="plan-card viability-mini">
-        <p class="viability-mini-tag">Recomendado para empezar</p>
-        <div class="plan-icon">🔍</div>
-        <h3>Estudio de viabilidad</h3>
-        <p class="plan-desc">Análisis de las coincidencias, probabilidad de registro explicada sin jerga legal. Hasta 3 nombres.</p>
-        <p class="price">$285.000 <span>Entrega en 24 horas hábiles · Se descuenta si continúas</span></p>
-        <a class="btn btn-outline" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20quiero%20el%20estudio%20de%20viabilidad%20de%20mi%20marca" target="_blank" rel="noopener">Quiero mi estudio</a>
+      <article class="plan-card service-card">
+        <div class="plan-icon">💬</div>
+        <h3>Hablemos 1 a 1</h3>
+        <p class="plan-desc">Una hora con un abogado experto para resolver tus dudas y recibir recomendaciones para tu empresa.</p>
+        <p class="price">$150.000 <span>Sesión de 1 hora</span></p>
+        <a class="btn btn-outline" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20quiero%20agendar%20Hablemos%201%20a%201" target="_blank" rel="noopener">Agendar mi sesión</a>
       </article>
-      <article class="plan-card featured">
-        <span class="badge-popular">Popular</span>
-        <div class="plan-icon">⚡</div>
-        <h3>Lo hacemos por ti, hasta la solicitud</h3>
-        <p class="plan-desc">Asesoría de 1 hora, estudio de viabilidad y estrategia, y radicamos tu solicitud ante la SIC.</p>
-        <p class="price">$975.000 <span>Pago único + tasa SIC</span></p>
-        <a class="btn btn-primary" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20me%20interesa%20el%20plan%20Lo%20hacemos%20por%20ti" target="_blank" rel="noopener">Elegir este plan</a>
+      <article class="plan-card service-card">
+        <div class="plan-icon">🔭</div>
+        <h3>Diagnóstico 360° de tu marca</h3>
+        <p class="plan-desc">Qué marcas parecidas existen, cómo protegen sus marcas tus competidores, qué tan probable es que aprueben la tuya y la mejor estrategia para registrarla.</p>
+        <p class="price">$240.000 <span>Documento escrito</span></p>
+        <a class="btn btn-outline" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20quiero%20el%20Diagn%C3%B3stico%20360%C2%B0%20de%20mi%20marca" target="_blank" rel="noopener">Quiero mi diagnóstico</a>
       </article>
-      <article class="plan-card plan-3">
-        <div class="plan-icon">🛡️</div>
-        <h3>Lo hacemos todo, de inicio a fin</h3>
-        <p class="plan-desc">Representación legal, seguimiento activo y recurso de apelación incluido si la marca es negada.</p>
-        <p class="price">$1.820.000 <span>Pago único o 3 cuotas + tasa SIC</span></p>
-        <a class="btn btn-outline" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20me%20interesa%20el%20plan%20completo" target="_blank" rel="noopener">Elegir este plan</a>
+      <article class="plan-card service-card featured">
+        <span class="badge-popular">Mejor valor</span>
+        <div class="plan-icon">⭐</div>
+        <h3>Diagnóstico 360° + Hablemos 1 a 1</h3>
+        <p class="plan-desc">Te entregamos el diagnóstico completo y lo revisamos juntos en una hora.</p>
+        <p class="price">$350.000 <span>Ahorras $40.000</span></p>
+        <a class="btn btn-primary" href="https://wa.me/573009574511?text=Hola%2C%20us%C3%A9%20el%20buscador%20y%20quiero%20el%20Diagn%C3%B3stico%20360%C2%B0%20%2B%20Hablemos%201%20a%201" target="_blank" rel="noopener">Quiero los dos</a>
       </article>
     </div>
-    <p class="plans-footnote"><a href="/#mc-planes">Ver todos los planes y comparar →</a></p>
+    <p class="plans-footnote"><a href="/#mc-planes">¿Listo para registrar? Ver los planes de registro →</a></p>
   </div>
 </section>
 
 <!-- ===== CÓMO FUNCIONA ===== -->
 <section class="section">
   <p class="eyebrow center">Cómo funciona</p>
-  <h2 class="center">Tres pasos, sin costo</h2>
+  <h2 class="center">Tu Búsqueda express, en tres pasos</h2>
   <div class="steps">
     <div class="step">
       <span class="step-num">1</span>
       <h4>Escribe tu marca</h4>
-      <p>Generamos al instante las variaciones fonéticas y de escritura que la Superintendencia podría considerar similares.</p>
+      <p>Te mostramos al instante, y gratis, las formas en que podría escribirse o sonar parecido.</p>
     </div>
     <div class="step">
       <span class="step-num">2</span>
-      <h4>Revisamos la base de la SIC</h4>
-      <p>Nuestro equipo busca el término exacto y cada variación en el sistema de propiedad industrial de la Superintendencia.</p>
+      <h4>Solicita tu búsqueda</h4>
+      <p>Déjanos tus datos y te escribimos por WhatsApp para confirmar el pago de $120.000.</p>
     </div>
     <div class="step">
       <span class="step-num">3</span>
-      <h4>Recibe las coincidencias</h4>
-      <p>Te enviamos por WhatsApp las marcas similares que encontremos, para que decidas el siguiente paso con información.</p>
+      <h4>Recibe la lista</h4>
+      <p>Buscamos cada versión en la base de la Superintendencia y te enviamos las marcas iguales o parecidas que encontremos.</p>
     </div>
   </div>
-  <p class="bf-disclaimer center">Esta búsqueda es orientativa y gratuita. No reemplaza un estudio de viabilidad: no evalúa logos, clases de productos o servicios ni similitud conceptual.</p>
+  <p class="bf-disclaimer center">La Búsqueda express es una lista de marcas iguales o parecidas, no un análisis. No te dice si tu marca puede registrarse: para eso está el Diagnóstico 360° de tu marca.</p>
 </section>
 
 <!-- ===== FOOTER ===== -->

@@ -213,6 +213,13 @@
     });
   });
 
+  // Búsqueda que llega desde la página de inicio (?marca=...).
+  var desdeInicio = new URLSearchParams(window.location.search).get('marca');
+  if (desdeInicio) {
+    inputMarca.value = desdeInicio;
+    buscar(desdeInicio);
+  }
+
   formLead.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!ultima) return;
@@ -220,7 +227,7 @@
     var r = ultima.r;
     var texto =
       'Hola, soy ' + (f.get('nombre') || '') + ' (WhatsApp: ' + (f.get('whatsapp') || '') + '). ' +
-      'Usé el buscador fonético y quiero mis resultados gratis para la marca "' + ultima.original + '".' +
+      'Quiero solicitar la Búsqueda express ($120.000) para la marca "' + ultima.original + '".' +
       (f.get('actividad') ? ' Mi negocio: ' + f.get('actividad') + '.' : '') +
       ' Variaciones a revisar: ' + [r.base].concat(r.foneticas, r.escritura).join(', ') + '.';
     window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank');

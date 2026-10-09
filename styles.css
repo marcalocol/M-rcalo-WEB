@@ -125,6 +125,7 @@ p{ margin: 0 0 1em; color: var(--charcoal-mid); }
 }
 .hero h1 .highlight-lav{ color: var(--lavender); }
 .hero-sub{ font-size: 1.1rem; max-width: 46ch; }
+.hero h1.hero-h1-long{ font-size: clamp(2rem, 3.4vw, 2.75rem); }
 .hero-ctas{ display:flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
 .hero-card{
@@ -373,6 +374,69 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
   z-index: 50;
 }
 
+/* ===== Hero: buscador rápido en la tarjeta ===== */
+.hero-card-text{ color: rgba(255,254,236,.65); font-size: .92rem; }
+.hero-search{
+  display:flex; gap:.5rem; margin-top: 1.25rem;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px; padding: .4rem;
+}
+.hero-search input{
+  flex:1; min-width:0; border:none; background:transparent; color: var(--apricot);
+  font-family: var(--font-body); font-size: 1rem; padding: .5rem 1rem;
+}
+.hero-search input::placeholder{ color: rgba(255,254,236,.4); }
+.hero-search input:focus{ outline:none; }
+.hero-search .btn{ padding: .75rem 1.5rem; }
+
+/* ===== Alertas educativas ===== */
+.edu-alert-gold{ background: rgba(202,196,38,0.14); border-left-color: var(--gold-green); }
+
+/* ===== El camino (pasos clicables) ===== */
+.path-steps .step{ display:flex; flex-direction:column; color: inherit; }
+.path-steps .step p{ flex-grow:1; }
+.path-steps .step .step-tag{ align-self:flex-start; }
+.path-steps .step:hover{ border-color: var(--lavender); }
+
+/* ===== Paso 1: Búsqueda express ===== */
+.express-inner{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 3.5rem; align-items:center; }
+.express-copy h2{ margin-left:0; }
+.express-copy .price{ margin: 1.5rem 0 1.25rem; }
+.express-note{ font-size: .85rem; color: var(--text-muted); font-style: italic; margin-top: 1rem; }
+.audience-list{
+  background: var(--apricot); border: 1px solid rgba(202,196,38,0.2);
+  border-radius: 18px; padding: 2rem;
+}
+.audience-title{ font-family: var(--font-display); font-weight:800; color: var(--charcoal); font-size: 1.1rem; }
+.audience-item{ display:flex; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(202,196,38,0.2); }
+.audience-icon{
+  flex-shrink:0; width:44px; height:44px; border-radius: 12px;
+  display:flex; align-items:center; justify-content:center; font-size: 1.2rem;
+  background: rgba(188,180,255,0.25);
+}
+.audience-item h4{ font-size: 1rem; margin-bottom: .2rem; }
+.audience-item p{ font-size: .88rem; margin: 0; }
+
+/* ===== Paso 2: servicios ===== */
+.services-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+.service-card{ background: var(--white); }
+.service-card .price{ font-size: 2rem; margin-top: .5rem; }
+.discount-note{
+  max-width: 760px; margin: 2.5rem auto 0; text-align:center;
+  background: var(--charcoal); color: var(--apricot);
+  border-radius: 16px; padding: 1.25rem 1.75rem; font-size: .98rem;
+}
+.discount-note strong{ color: var(--gold-green); }
+
+/* ===== Paso 3: planes ===== */
+.plans-grid.plans-grid-3{ grid-template-columns: repeat(3,1fr); }
+.plan-tagline{ font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; color: var(--lavender-dark); }
+.plan-for{ font-size: .88rem; color: var(--text-muted); }
+.plan-for strong{ color: var(--charcoal); }
+.plans-grid-3 .price{ font-size: 2.1rem; margin-bottom: .25rem; }
+.feature-list li.partial::before{ content: "~"; position:absolute; left:0; color: var(--lavender-dark); font-weight:800; }
+.plans-rate{ max-width: 760px; margin: 2.5rem auto 0; text-align:left; font-size: .9rem; }
+
 /* ===== Buscador fonético ===== */
 .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .bf-hero-inner{
@@ -420,6 +484,7 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 .bf-lead h3, .bf-gracias h3{ color: var(--apricot); font-size: 1.35rem; margin: 0; }
 .bf-lead-tag{ font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; color: var(--gold-green); margin: 0; }
 .bf-lead-sub{ color: rgba(255,254,236,.6); font-size: .9rem; margin: 0; }
+.bf-lead-discount{ font-size: .82rem; color: rgba(255,254,236,.75); background: rgba(202,196,38,.12); border-radius: 10px; padding: .6rem .8rem; margin: 0; }
 .quote-form label.bf-check{
   flex-direction: row; align-items:flex-start; gap:.6rem;
   text-transform:none; letter-spacing:0; font-weight:500; font-size:.8rem; color: rgba(255,254,236,.6);
@@ -447,11 +512,12 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
   .site-footer{ grid-template-columns: 1fr; }
   .quote-section{ grid-template-columns: 1fr; }
   .bf-grid, .bf-upsell-grid{ grid-template-columns: 1fr; }
+  .express-inner, .services-grid, .plans-grid.plans-grid-3{ grid-template-columns: 1fr; }
   .bf-lado{ position: static; }
 }
 @media (max-width: 700px){
   .site-header{ flex-wrap: wrap; gap: .75rem; }
-  .ig-link{ display:none; }
+  .ig-link, .nav-hide-sm{ display:none; }
   .nav{ gap: 1rem; }
   .nav .nav-search{ font-size: .8rem; padding: .45rem .9rem; }
   .bf-form{ flex-direction: column; border-radius: 18px; }
