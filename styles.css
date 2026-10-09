@@ -518,6 +518,18 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 .camara-card-arrow{ font-size: 1.5rem; font-weight: 800; color: var(--lavender-dark); }
 .camara-cta-btns{ justify-content:center; }
 
+/* ===== Tabla de tarifas SIC ===== */
+.fee-table{
+  margin: 1rem 0 0 calc(36px + .75rem); max-width: 520px;
+  background: var(--lavender-light); border-radius: 14px; padding: 1rem 1.25rem;
+}
+.fee-table-title{ margin: 0 0 .5rem; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; color: var(--lavender-dark); }
+.fee-table table{ width: 100%; border-collapse: collapse; font-size: .9rem; }
+.fee-table th{ text-align: right; font-size: .78rem; color: var(--text-muted); font-weight: 700; padding-bottom: .35rem; }
+.fee-table td{ padding: .35rem 0; border-top: 1px solid rgba(188,180,255,0.45); color: var(--charcoal); }
+.fee-table td + td{ text-align: right; font-family: var(--font-display); font-weight: 700; white-space: nowrap; padding-left: 1rem; }
+@media (max-width: 700px){ .fee-table{ margin-left: 0; } }
+
 /* ===== Páginas legales ===== */
 .legal-hero{ padding-bottom: 3rem; }
 .legal-hero h1{ font-size: clamp(1.9rem, 3.5vw, 2.8rem); }
