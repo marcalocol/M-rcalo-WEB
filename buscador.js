@@ -185,14 +185,8 @@
     }
     ultima = { original: texto.trim(), r: r };
 
-    document.getElementById('bf-nombre-buscado').textContent = '"' + texto.trim() + '"';
-    document.getElementById('bf-clave').textContent = '/' + r.clave + '/';
-    document.getElementById('bf-total').textContent = 1 + r.foneticas.length + r.escritura.length;
-    pintarChips(document.getElementById('bf-chips-exacta'), [r.base]);
-    pintarChips(document.getElementById('bf-chips-foneticas'), r.foneticas);
-    pintarChips(document.getElementById('bf-chips-escritura'), r.escritura);
-    document.getElementById('bf-grupo-foneticas').hidden = !r.foneticas.length;
-    document.getElementById('bf-grupo-escritura').hidden = !r.escritura.length;
+    document.getElementById('bf-nombre-buscado').textContent = texto.trim();
+    pintarChips(document.getElementById('bf-chips'), r.foneticas.concat(r.escritura));
 
     formLead.hidden = false;
     gracias.hidden = true;
@@ -203,14 +197,6 @@
   formBusqueda.addEventListener('submit', function (e) {
     e.preventDefault();
     buscar(inputMarca.value);
-  });
-
-  // Ejemplos clicables bajo el buscador.
-  Array.prototype.forEach.call(document.querySelectorAll('[data-ejemplo]'), function (b) {
-    b.addEventListener('click', function () {
-      inputMarca.value = b.getAttribute('data-ejemplo');
-      buscar(inputMarca.value);
-    });
   });
 
   // Búsqueda que llega desde la página de inicio (?marca=...).
@@ -224,12 +210,10 @@
     e.preventDefault();
     if (!ultima) return;
     var f = new FormData(formLead);
-    var r = ultima.r;
     var texto =
       'Hola, soy ' + (f.get('nombre') || '') + ' (WhatsApp: ' + (f.get('whatsapp') || '') + '). ' +
       'Quiero solicitar la Búsqueda express ($120.000) para la marca "' + ultima.original + '".' +
-      (f.get('actividad') ? ' Mi negocio: ' + f.get('actividad') + '.' : '') +
-      ' Variaciones a revisar: ' + [r.base].concat(r.foneticas, r.escritura).join(', ') + '.';
+      (f.get('actividad') ? ' Mi empresa se dedica a: ' + f.get('actividad') + '.' : '');
     window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank');
     formLead.hidden = true;
     gracias.hidden = false;
