@@ -480,6 +480,44 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
 .fee-values{ display:flex; flex-wrap:wrap; gap: .5rem 2rem; margin-top: .5rem !important; }
 .fee-values strong{ font-family: var(--font-display); font-size: 1.15rem; }
 
+/* ===== Ajustes de precios v2 ===== */
+.hero-card-note{ margin: .35rem 0 0; font-size: .82rem; color: rgba(255,254,236,.5); font-style: italic; }
+.price-row-detail{ align-items:start; }
+.price-row-detail .price-row-amount, .price-row-detail .btn{ margin-top: .1rem; }
+.detail-list{ list-style:none; padding:0; margin: .75rem 0 0; display:grid; gap:.5rem; }
+.detail-list li{ position:relative; padding-left: 1.4rem; font-size: .88rem; color: var(--text-muted); line-height: 1.45; }
+.detail-list li::before{ content:'✦'; position:absolute; left:0; color: var(--gold-green-dark); font-size: .7rem; top: 4px; }
+.detail-list strong{ color: var(--charcoal); }
+.pricing .plan-card .price span{ font-size: .8rem; color: var(--lavender-dark); font-weight: 700; }
+.plan-total{
+  background: var(--white); border: 1px solid rgba(188,180,255,0.45); border-radius: 12px;
+  padding: .8rem 1rem; margin-bottom: .9rem;
+}
+.plan-total p{ margin: 0; display:flex; justify-content:space-between; font-size: .88rem; color: var(--charcoal); }
+.plan-total p + p{ margin-top: .2rem; }
+.plan-total strong{ font-family: var(--font-display); }
+.plan-total .plan-total-title{ display:block; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; color: var(--lavender-dark); margin-bottom: .35rem; }
+.plan-total-title span{ text-transform:none; font-weight: 600; letter-spacing: 0; color: var(--text-muted); }
+.discount-box{
+  margin-top: 1.5rem; padding: 1.25rem 1.5rem; border-radius: 16px;
+  background: var(--charcoal); color: var(--apricot);
+}
+.discount-box p{ margin: 0; color: rgba(255,254,236,.8); font-size: .92rem; }
+.discount-box .discount-box-title{ color: var(--gold-green); font-weight: 800; margin-bottom: .35rem; font-size: 1rem; }
+.camara-teaser{ padding-top: 0; padding-bottom: 4rem; }
+.camara-card{
+  display:flex; align-items:center; gap: 1.25rem; max-width: 1000px; margin: 0 auto;
+  background: var(--apricot-dark); border: 1px solid rgba(202,196,38,0.3); border-radius: 18px;
+  padding: 1.5rem 1.75rem; transition: transform .2s ease, box-shadow .2s ease;
+}
+.camara-card:hover{ transform: translateY(-3px); box-shadow: 0 12px 32px rgba(34,34,35,0.08); }
+.camara-card-icon{ font-size: 2rem; }
+.camara-card-text{ flex:1; display:flex; flex-direction:column; gap:.2rem; }
+.camara-card-text strong{ font-family: var(--font-display); font-size: 1.15rem; }
+.camara-card-text span{ color: var(--text-muted); font-size: .92rem; }
+.camara-card-arrow{ font-size: 1.5rem; font-weight: 800; color: var(--lavender-dark); }
+.camara-cta-btns{ justify-content:center; }
+
 /* ===== Buscador fonético ===== */
 .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .bf-hero-inner{
