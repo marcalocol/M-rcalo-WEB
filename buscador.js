@@ -206,17 +206,94 @@
     buscar(desdeInicio);
   }
 
+  var botonPagar = document.getElementById('bf-pagar');
+  var errorPago = document.getElementById('bf-error');
+  var CLAVE_SOLICITUD = 'marcalo-busqueda-express';
+
+  function mensajeWhatsApp(d, orden) {
+    return 'Hola, soy ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + '). ' +
+      (orden ? 'Pagué la Búsqueda express (orden ' + orden + ')' : 'Quiero solicitar la Búsqueda express ($120.000)') +
+      ' para la marca "' + d.marca + '".' +
+      (d.actividad ? ' Mi empresa se dedica a: ' + d.actividad + '.' : '');
+  }
+
+  function mostrarGracias(titulo, texto, enlaceWa, tag) {
+    if (tag) document.getElementById('bf-gracias-tag').textContent = tag;
+    document.getElementById('bf-gracias-titulo').textContent = titulo;
+    document.getElementById('bf-gracias-texto').textContent = texto;
+    document.getElementById('bf-gracias-wa').href = enlaceWa;
+    resultados.hidden = false;
+    formLead.hidden = true;
+    gracias.hidden = false;
+    gracias.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function linkWa(texto) {
+    return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
+  }
+
   formLead.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!ultima) return;
     var f = new FormData(formLead);
-    var texto =
-      'Hola, soy ' + (f.get('nombre') || '') + ' (WhatsApp: ' + (f.get('whatsapp') || '') + '). ' +
-      'Quiero solicitar la Búsqueda express ($120.000) para la marca "' + ultima.original + '".' +
-      (f.get('actividad') ? ' Mi empresa se dedica a: ' + f.get('actividad') + '.' : '');
-    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank');
-    formLead.hidden = true;
-    gracias.hidden = false;
-    gracias.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var datos = {
+      nombre: String(f.get('nombre') || '').trim(),
+      whatsapp: String(f.get('whatsapp') || '').trim(),
+      actividad: String(f.get('actividad') || '').trim(),
+      marca: ultima.original
+    };
+    errorPago.hidden = true;
+    botonPagar.disabled = true;
+    botonPagar.textContent = 'Abriendo el pago…';
+
+    fetch('/api/bold-firma?marca=' + encodeURIComponent(datos.marca))
+      .then(function (r) { if (!r.ok) throw new Error('firma'); return r.json(); })
+      .then(function (o) {
+        if (typeof window.BoldCheckout !== 'function') throw new Error('bold');
+        try { sessionStorage.setItem(CLAVE_SOLICITUD, JSON.stringify(datos)); } catch (err) { /* sin almacenamiento */ }
+        var checkout = new window.BoldCheckout({
+          orderId: o.orderId,
+          currency: o.currency,
+          amount: o.amount,
+          apiKey: o.apiKey,
+          integritySignature: o.integritySignature,
+          description: o.description,
+          redirectionUrl: window.location.origin + '/buscador.html'
+        });
+        checkout.open();
+        botonPagar.disabled = false;
+        botonPagar.textContent = 'Pagar $120.000 →';
+      })
+      .catch(function () {
+        // Si el pago en línea falla, seguimos por WhatsApp como antes.
+        botonPagar.disabled = false;
+        botonPagar.textContent = 'Pagar $120.000 →';
+        errorPago.textContent = 'No pudimos abrir el pago en línea. Escríbenos por WhatsApp y te enviamos el link de pago.';
+        errorPago.hidden = false;
+        mostrarGracias('Coordinemos tu pago por WhatsApp', 'No pudimos abrir el pago en línea. Envíanos tus datos y te enviamos el link de pago.', linkWa(mensajeWhatsApp(datos)), 'Un paso más');
+      });
   });
+
+  // Regreso desde Bold después del pago.
+  var params = new URLSearchParams(window.location.search);
+  var orden = params.get('bold-order-id');
+  if (orden) {
+    var estado = (params.get('bold-tx-status') || '').toLowerCase();
+    var datos = null;
+    try { datos = JSON.parse(sessionStorage.getItem(CLAVE_SOLICITUD) || 'null'); } catch (err) { /* sin almacenamiento */ }
+    datos = datos || { nombre: '', whatsapp: '', actividad: '', marca: '' };
+    if (datos.marca) {
+      inputMarca.value = datos.marca;
+      buscar(datos.marca);
+    }
+    if (estado === 'rejected' || estado === 'failed') {
+      mostrarGracias('Tu pago no fue aprobado', 'Puedes intentarlo de nuevo o escribirnos por WhatsApp y te ayudamos.', linkWa(mensajeWhatsApp(datos)), 'Pago no aprobado');
+      formLead.hidden = false;
+    } else if (estado === 'pending') {
+      mostrarGracias('Tu pago está en proceso', 'Cuando se confirme empezamos tu búsqueda. Envíanos tus datos por WhatsApp con tu número de orden: ' + orden + '.', linkWa(mensajeWhatsApp(datos, orden)), 'Pago pendiente');
+    } else {
+      try { sessionStorage.removeItem(CLAVE_SOLICITUD); } catch (err) { /* sin almacenamiento */ }
+      mostrarGracias('Ya estamos trabajando en tu Búsqueda express', 'Tu número de orden es ' + orden + '. Envíanos tus datos por WhatsApp para entregarte los resultados.', linkWa(mensajeWhatsApp(datos, orden)), '¡Pago recibido! ✓');
+    }
+  }
 })();

@@ -584,6 +584,10 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
   border-radius: 999px; padding: .35rem .85rem; font-size: .88rem; font-weight:600;
 }
 #bf-chips-exacta .bf-chip{ background: var(--charcoal); color: var(--apricot); border-color: var(--charcoal); }
+.bf-pago-medios{ margin: -.4rem 0 0; font-size: .78rem; color: rgba(255,254,236,.5); text-align:center; }
+.bf-error{ margin: 0; font-size: .85rem; color: #FFB4A8; }
+.bf-gracias .btn{ margin-top: .5rem; }
+#bf-pagar:disabled{ opacity: .7; cursor: wait; }
 .bf-ayuda-ref{ margin: 1.25rem 0 0; font-size: .88rem; }
 .bf-lado .bf-lead h3{ font-size: 2rem; }
 .bf-next{ text-align:center; margin: 3rem 0 0; color: var(--text-muted); }
