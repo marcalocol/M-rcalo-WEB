@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/buscador.html", "destination": "/busqueda-de-marca-express", "permanent": true },
+    { "source": "/buscador", "destination": "/busqueda-de-marca-express", "permanent": true },
+    { "source": "/camara-de-comercio.html", "destination": "/registro-de-marca-colombia#camara-de-comercio", "permanent": true },
+    { "source": "/camara-de-comercio", "destination": "/registro-de-marca-colombia#camara-de-comercio", "permanent": true }
+  ]
+}

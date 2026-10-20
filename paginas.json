@@ -1,0 +1,18 @@
+[
+  { "seccion": "inicio",       "es": "/",                                            "en": "/en" },
+  { "seccion": "busqueda",     "es": "/busqueda-de-marca-express",                   "en": "/en/express-trademark-search" },
+  { "seccion": "busqueda",     "es": "/busqueda-de-marca-express/para-disenadores",  "en": "/en/express-trademark-search/for-designers" },
+  { "seccion": "busqueda",     "es": "/busqueda-de-marca-express/para-abogados",     "en": "/en/express-trademark-search/for-lawyers" },
+  { "seccion": "registro",     "es": "/registro-de-marca-colombia",                  "en": "/en/trademark-registration-colombia" },
+  { "seccion": "registro",     "es": "/registro-de-marca-colombia/cuanto-cuesta",    "en": "/en/trademark-registration-colombia/cost" },
+  { "seccion": "registro",     "es": "/registro-de-marca-colombia/cuanto-tarda",     "en": "/en/trademark-registration-colombia/how-long-it-takes" },
+  { "seccion": "diagnosticos", "es": "/diagnosticos-legales",                        "en": "/en/legal-assessments" },
+  { "seccion": "diagnosticos", "es": "/diagnosticos-legales/contratos",              "en": "/en/legal-assessments/contracts" },
+  { "seccion": "diagnosticos", "es": "/diagnosticos-legales/secretos-empresariales", "en": "/en/legal-assessments/trade-secrets" },
+  { "seccion": "diagnosticos", "es": "/diagnosticos-legales/laboral",                "en": "/en/legal-assessments/employment" },
+  { "seccion": "diagnosticos", "es": "/diagnosticos-legales/cobranza",               "en": "/en/legal-assessments/debt-collection" },
+  { "seccion": "diagnosticos", "es": "/diagnosticos-legales/proteccion-al-consumidor", "en": "/en/legal-assessments/consumer-protection" },
+  { "seccion": "nosotros",     "es": "/quienes-somos",                               "en": "/en/about-us" },
+  { "seccion": "legal",        "es": "/terminos-y-condiciones",                      "en": "/en/terms-and-conditions" },
+  { "seccion": "legal",        "es": "/politica-de-tratamiento-de-datos",            "en": "/en/privacy-policy" }
+]

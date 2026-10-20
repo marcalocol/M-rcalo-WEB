@@ -158,6 +158,55 @@
   var WHATSAPP = '573009574511';
   var F = window.MarcaloFonetica;
 
+  // Textos de la interfaz según el idioma de la página (<html lang>).
+  var TEXTOS = {
+    es: {
+      pagar: 'Pagar $120.000 →',
+      abriendo: 'Abriendo el pago…',
+      hola: function (d) { return 'Hola, soy ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + '). '; },
+      pague: function (orden) { return 'Pagué la Búsqueda express (orden ' + orden + ')'; },
+      quiero: 'Quiero solicitar la Búsqueda express ($120.000)',
+      paraMarca: function (marca) { return ' para la marca "' + marca + '".'; },
+      actividad: function (a) { return ' Mi empresa se dedica a: ' + a + '.'; },
+      errorPago: 'No pudimos abrir el pago en línea. Escríbenos por WhatsApp y te enviamos el link de pago.',
+      falloTitulo: 'Coordinemos tu pago por WhatsApp',
+      falloTexto: 'No pudimos abrir el pago en línea. Envíanos tus datos y te enviamos el link de pago.',
+      falloTag: 'Un paso más',
+      rechazadoTitulo: 'Tu pago no fue aprobado',
+      rechazadoTexto: 'Puedes intentarlo de nuevo o escribirnos por WhatsApp y te ayudamos.',
+      rechazadoTag: 'Pago no aprobado',
+      pendienteTitulo: 'Tu pago está en proceso',
+      pendienteTexto: function (orden) { return 'Cuando se confirme empezamos tu búsqueda. Envíanos tus datos por WhatsApp con tu número de orden: ' + orden + '.'; },
+      pendienteTag: 'Pago pendiente',
+      aprobadoTitulo: 'Ya estamos trabajando en tu Búsqueda express',
+      aprobadoTexto: function (orden) { return 'Tu número de orden es ' + orden + '. Envíanos tus datos por WhatsApp para entregarte los resultados.'; },
+      aprobadoTag: '¡Pago recibido! ✓'
+    },
+    en: {
+      pagar: 'Pay COP 120,000 →',
+      abriendo: 'Opening payment…',
+      hola: function (d) { return 'Hi, I am ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + '). '; },
+      pague: function (orden) { return 'I paid for the Express trademark search (order ' + orden + ')'; },
+      quiero: 'I would like to request the Express trademark search (COP 120,000)',
+      paraMarca: function (marca) { return ' for the brand "' + marca + '".'; },
+      actividad: function (a) { return ' My company does: ' + a + '.'; },
+      errorPago: 'We could not open the online payment. Message us on WhatsApp and we will send you a payment link.',
+      falloTitulo: "Let's arrange your payment on WhatsApp",
+      falloTexto: 'We could not open the online payment. Send us your details and we will send you a payment link.',
+      falloTag: 'One more step',
+      rechazadoTitulo: 'Your payment was not approved',
+      rechazadoTexto: 'You can try again or message us on WhatsApp and we will help you.',
+      rechazadoTag: 'Payment not approved',
+      pendienteTitulo: 'Your payment is being processed',
+      pendienteTexto: function (orden) { return 'Once it is confirmed we will start your search. Send us your details on WhatsApp with your order number: ' + orden + '.'; },
+      pendienteTag: 'Payment pending',
+      aprobadoTitulo: 'We are already working on your Express search',
+      aprobadoTexto: function (orden) { return 'Your order number is ' + orden + '. Send us your details on WhatsApp so we can deliver your results.'; },
+      aprobadoTag: 'Payment received! ✓'
+    }
+  };
+  var T = TEXTOS[(document.documentElement.lang || 'es').slice(0, 2) === 'en' ? 'en' : 'es'];
+
   var formBusqueda = document.getElementById('bf-form');
   var inputMarca = document.getElementById('bf-marca');
   var resultados = document.getElementById('bf-resultados');
@@ -211,10 +260,10 @@
   var CLAVE_SOLICITUD = 'marcalo-busqueda-express';
 
   function mensajeWhatsApp(d, orden) {
-    return 'Hola, soy ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + '). ' +
-      (orden ? 'Pagué la Búsqueda express (orden ' + orden + ')' : 'Quiero solicitar la Búsqueda express ($120.000)') +
-      ' para la marca "' + d.marca + '".' +
-      (d.actividad ? ' Mi empresa se dedica a: ' + d.actividad + '.' : '');
+    return T.hola(d) +
+      (orden ? T.pague(orden) : T.quiero) +
+      T.paraMarca(d.marca) +
+      (d.actividad ? T.actividad(d.actividad) : '');
   }
 
   function mostrarGracias(titulo, texto, enlaceWa, tag) {
@@ -244,7 +293,7 @@
     };
     errorPago.hidden = true;
     botonPagar.disabled = true;
-    botonPagar.textContent = 'Abriendo el pago…';
+    botonPagar.textContent = T.abriendo;
 
     fetch('/api/bold-firma?marca=' + encodeURIComponent(datos.marca))
       .then(function (r) { if (!r.ok) throw new Error('firma'); return r.json(); })
@@ -258,19 +307,20 @@
           apiKey: o.apiKey,
           integritySignature: o.integritySignature,
           description: o.description,
-          redirectionUrl: window.location.origin + '/buscador.html'
+          // Bold devuelve al usuario a esta misma página (en español o en inglés).
+          redirectionUrl: window.location.origin + window.location.pathname
         });
         checkout.open();
         botonPagar.disabled = false;
-        botonPagar.textContent = 'Pagar $120.000 →';
+        botonPagar.textContent = T.pagar;
       })
       .catch(function () {
         // Si el pago en línea falla, seguimos por WhatsApp como antes.
         botonPagar.disabled = false;
-        botonPagar.textContent = 'Pagar $120.000 →';
-        errorPago.textContent = 'No pudimos abrir el pago en línea. Escríbenos por WhatsApp y te enviamos el link de pago.';
+        botonPagar.textContent = T.pagar;
+        errorPago.textContent = T.errorPago;
         errorPago.hidden = false;
-        mostrarGracias('Coordinemos tu pago por WhatsApp', 'No pudimos abrir el pago en línea. Envíanos tus datos y te enviamos el link de pago.', linkWa(mensajeWhatsApp(datos)), 'Un paso más');
+        mostrarGracias(T.falloTitulo, T.falloTexto, linkWa(mensajeWhatsApp(datos)), T.falloTag);
       });
   });
 
@@ -287,13 +337,13 @@
       buscar(datos.marca);
     }
     if (estado === 'rejected' || estado === 'failed') {
-      mostrarGracias('Tu pago no fue aprobado', 'Puedes intentarlo de nuevo o escribirnos por WhatsApp y te ayudamos.', linkWa(mensajeWhatsApp(datos)), 'Pago no aprobado');
+      mostrarGracias(T.rechazadoTitulo, T.rechazadoTexto, linkWa(mensajeWhatsApp(datos)), T.rechazadoTag);
       formLead.hidden = false;
     } else if (estado === 'pending') {
-      mostrarGracias('Tu pago está en proceso', 'Cuando se confirme empezamos tu búsqueda. Envíanos tus datos por WhatsApp con tu número de orden: ' + orden + '.', linkWa(mensajeWhatsApp(datos, orden)), 'Pago pendiente');
+      mostrarGracias(T.pendienteTitulo, T.pendienteTexto(orden), linkWa(mensajeWhatsApp(datos, orden)), T.pendienteTag);
     } else {
       try { sessionStorage.removeItem(CLAVE_SOLICITUD); } catch (err) { /* sin almacenamiento */ }
-      mostrarGracias('Ya estamos trabajando en tu Búsqueda express', 'Tu número de orden es ' + orden + '. Envíanos tus datos por WhatsApp para entregarte los resultados.', linkWa(mensajeWhatsApp(datos, orden)), '¡Pago recibido! ✓');
+      mostrarGracias(T.aprobadoTitulo, T.aprobadoTexto(orden), linkWa(mensajeWhatsApp(datos, orden)), T.aprobadoTag);
     }
   }
 })();
