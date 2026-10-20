@@ -109,6 +109,16 @@ Tipografía (Google Fonts):
   a la búsqueda en su idioma. Si la página cambia de URL, dejar una redirección 301 desde la
   anterior (como `/buscador.html` → `/busqueda-de-marca-express`) para los pagos en curso.
 - Los textos de `buscador.js` están en el objeto `TEXTOS` (`es` / `en`), según `<html lang>`.
+
+## Movimiento y calculadora
+
+- `animaciones.js` (cargado desde el footer en todas las páginas) hace aparecer los bloques al
+  bajar por la página; las animaciones de entrada del hero son solo CSS. Todo respeta
+  "reducir movimiento" (`prefers-reduced-motion`) y sin JavaScript el contenido se ve normal.
+- `calculadora.js` (solo en "¿Cuánto cuesta?", español e inglés) calcula honorarios + tarifa de la
+  SIC. **Los precios están en `calculadora.js`**: si cambian, actualizarlos ahí y en las tablas de
+  `registro-de-marca-colombia.html`, `registro-de-marca-colombia/cuanto-cuesta.html` y sus versiones
+  en inglés.
 - No cambiar los IDs del DOM que usa `buscador.js` (`bf-form`, `bf-marca`,
   `bf-resultados`, `bf-lead`, `bf-pagar`, `bf-error`, `bf-gracias*`, `bf-chips`,
   `bf-nombre-buscado`).

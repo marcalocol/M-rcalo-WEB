@@ -22,6 +22,12 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
 - [ ] **Términos y condiciones**: agregué que la Búsqueda express cubre solo Colombia y se paga
       con Bold, y un punto nuevo sobre los Diagnósticos legales.
 
+## Calculadora de costos
+
+- [ ] Con más de una categoría la calculadora suma la tarifa de la SIC por categoría, pero deja los
+      honorarios del plan igual y avisa que "pueden variar". Si tienen una tarifa por categoría
+      adicional en honorarios, pásamela y la incluyo.
+
 ## Traducción al inglés
 
 - [ ] Nombres de servicios en inglés: "360° Brand Diagnosis", "Let's Talk 1-on-1",

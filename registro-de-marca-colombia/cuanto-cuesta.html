@@ -55,11 +55,71 @@
     <p class="hero-badge">Costos del registro</p>
     <h1>¿Cuánto cuesta <span class="highlight">registrar una marca</span> en Colombia?</h1>
     <p class="hero-sub center">El costo total tiene dos partes: la tarifa que cobra la Superintendencia de Industria y Comercio y los honorarios de quien te acompaña. Te mostramos las dos, sin letra pequeña.</p>
+    <div class="hero-ctas camara-cta-btns">
+      <a class="btn btn-primary" href="#calculadora">Calcula tu inversión</a>
+    </div>
   </div>
 </section>
 </div>
 
-<section class="section section-white pricing">
+<!-- ===== CALCULADORA ===== -->
+<section id="calculadora" class="section section-white">
+  <p class="eyebrow center">Calculadora</p>
+  <h2 class="center">Calcula cuánto te cuesta registrar tu marca</h2>
+  <p class="section-sub center">Elige tus opciones y mira al instante la inversión total aproximada: honorarios de Márcalo más la tarifa de la Superintendencia.</p>
+  <form class="calc" data-calculadora>
+    <div class="calc-campos">
+      <fieldset class="calc-grupo">
+        <legend>¿Tu empresa es PYME?</legend>
+        <div class="calc-opciones">
+          <label class="calc-opcion"><input type="radio" name="tamano" value="pyme" checked /><span>Sí, es PYME</span></label>
+          <label class="calc-opcion"><input type="radio" name="tamano" value="nopyme" /><span>No es PYME</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="calc-grupo">
+        <legend>¿Cuántas categorías quieres proteger?</legend>
+        <div class="calc-contador">
+          <button type="button" data-paso="-1" aria-label="Una categoría menos">−</button>
+          <input type="number" name="categorias" value="1" min="1" max="45" inputmode="numeric" aria-label="¿Cuántas categorías quieres proteger?" />
+          <button type="button" data-paso="1" aria-label="Una categoría más">+</button>
+        </div>
+        <p class="calc-ayuda">Cada categoría agrupa productos o servicios parecidos. Si no estás seguro, empieza con 1.</p>
+      </fieldset>
+      <fieldset class="calc-grupo">
+        <legend>¿Qué plan te interesa?</legend>
+        <div class="calc-opciones calc-opciones-planes">
+          <label class="calc-opcion"><input type="radio" name="plan" value="autonomo" /><span><strong>Autónomo</strong><small>Tú lo presentas</small></span></label>
+          <label class="calc-opcion"><input type="radio" name="plan" value="equipo" checked /><span><strong>En Equipo</strong><small>Lo presentamos</small></span></label>
+          <label class="calc-opcion"><input type="radio" name="plan" value="blindado" /><span><strong>Blindado</strong><small>Nos encargamos de todo</small></span></label>
+        </div>
+      </fieldset>
+      <fieldset class="calc-grupo">
+        <legend>¿Pagaste un servicio previo en los últimos 30 días?</legend>
+        <select name="previo" aria-label="¿Pagaste un servicio previo en los últimos 30 días?">
+          <option value="ninguno">No</option>
+          <option value="hablemos">Hablemos 1 a 1 ($150.000)</option>
+          <option value="diagnostico">Diagnóstico 360° de tu marca ($240.000)</option>
+          <option value="combo">Diagnóstico 360° de tu marca + Hablemos 1 a 1 ($350.000)</option>
+        </select>
+      </fieldset>
+      <a class="calc-barra" href="#calc-resultado" aria-hidden="true" tabindex="-1"><span>Total aproximado</span> <strong data-total-barra>$2.420.000</strong> <em>Ver detalle ↓</em></a>
+    </div>
+
+    <div id="calc-resultado" class="calc-resultado" aria-live="polite">
+      <p class="hero-card-tag">Inversión total aproximada</p>
+      <p class="calc-total" data-total>$2.420.000</p>
+      <dl class="calc-desglose">
+        <div><dt>Honorarios de Márcalo</dt><dd data-honorarios>$1.450.000</dd></div>
+        <div data-fila-descuento hidden><dt>Descuento por servicio previo</dt><dd data-descuento></dd></div>
+        <div><dt>Tarifa de la Superintendencia <span data-sic-detalle>1 categoría</span></dt><dd data-sic>$970.000</dd></div>
+      </dl>
+      <p class="calc-nota" data-nota>Para acceder a la tarifa PYME debes cumplir los requisitos de la Superintendencia.</p>
+      <a class="btn btn-primary" data-whatsapp href="https://wa.me/573009574511?text=Hola%2C%20quiero%20registrar%20mi%20marca" target="_blank" rel="noopener">Quiero registrar mi marca →</a>
+    </div>
+  </form>
+</section>
+
+<section class="section pricing">
   <div class="price-block">
     <h2 class="price-block-title"><span class="price-block-num">1</span> La tarifa de la Superintendencia</h2>
     <p class="price-block-sub">Se le paga directamente a la Superintendencia de Industria y Comercio. Depende de dos cosas: si tu empresa es PYME o no, y de cuántas categorías de productos o servicios quieras proteger.</p>
@@ -124,7 +184,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section section-white">
   <p class="eyebrow center">Qué cambia el precio</p>
   <h2 class="center">Lo que hace subir o bajar la inversión</h2>
   <div class="feature-grid">
@@ -151,7 +211,7 @@
   </div>
 </section>
 
-<section class="section section-white">
+<section class="section">
   <p class="eyebrow center">Preguntas frecuentes</p>
   <h2 class="center">Sobre el costo del registro</h2>
   <div class="faq-list">
@@ -182,6 +242,8 @@
   </div>
 </section>
 
+<script src="/calculadora.js"></script>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-brand">
@@ -209,6 +271,8 @@
 <a class="floating-whatsapp" href="https://wa.me/573009574511?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20registro%20de%20marca" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
   💬
 </a>
+
+<script src="/animaciones.js"></script>
 <!-- /FOOTER -->
 </body>
 </html>

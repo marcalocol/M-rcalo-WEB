@@ -55,11 +55,71 @@
     <p class="hero-badge">Registration costs</p>
     <h1>How much does it cost to <span class="highlight">register a trademark</span> in Colombia?</h1>
     <p class="hero-sub center">The total cost has two parts: the official fee of the Superintendence of Industry and Commerce and the fees of whoever guides you. We show you both, with no fine print.</p>
+    <div class="hero-ctas camara-cta-btns">
+      <a class="btn btn-primary" href="#calculator">Calculate your investment</a>
+    </div>
   </div>
 </section>
 </div>
 
-<section class="section section-white pricing">
+<!-- ===== CALCULADORA ===== -->
+<section id="calculator" class="section section-white">
+  <p class="eyebrow center">Calculator</p>
+  <h2 class="center">Calculate how much it costs to register your trademark</h2>
+  <p class="section-sub center">Choose your options and instantly see the approximate total investment: Márcalo's fees plus the SIC official fee.</p>
+  <form class="calc" data-calculadora>
+    <div class="calc-campos">
+      <fieldset class="calc-grupo">
+        <legend>Is your company an SME?</legend>
+        <div class="calc-opciones">
+          <label class="calc-opcion"><input type="radio" name="tamano" value="pyme" checked /><span>Yes, SME</span></label>
+          <label class="calc-opcion"><input type="radio" name="tamano" value="nopyme" /><span>Not an SME</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="calc-grupo">
+        <legend>How many classes do you want to protect?</legend>
+        <div class="calc-contador">
+          <button type="button" data-paso="-1" aria-label="One class less">−</button>
+          <input type="number" name="categorias" value="1" min="1" max="45" inputmode="numeric" aria-label="How many classes do you want to protect?" />
+          <button type="button" data-paso="1" aria-label="One class more">+</button>
+        </div>
+        <p class="calc-ayuda">Each class groups similar goods or services. If you are not sure, start with 1.</p>
+      </fieldset>
+      <fieldset class="calc-grupo">
+        <legend>Which plan are you interested in?</legend>
+        <div class="calc-opciones calc-opciones-planes">
+          <label class="calc-opcion"><input type="radio" name="plan" value="autonomo" /><span><strong>Self-Service</strong><small>You file it</small></span></label>
+          <label class="calc-opcion"><input type="radio" name="plan" value="equipo" checked /><span><strong>Team</strong><small>We file it</small></span></label>
+          <label class="calc-opcion"><input type="radio" name="plan" value="blindado" /><span><strong>Shielded</strong><small>We handle everything</small></span></label>
+        </div>
+      </fieldset>
+      <fieldset class="calc-grupo">
+        <legend>Did you pay for a prior service in the last 30 days?</legend>
+        <select name="previo" aria-label="Did you pay for a prior service in the last 30 days?">
+          <option value="ninguno">No</option>
+          <option value="hablemos">Let's Talk 1-on-1 (COP 150,000)</option>
+          <option value="diagnostico">360° Brand Diagnosis (COP 240,000)</option>
+          <option value="combo">360° Brand Diagnosis + Let's Talk 1-on-1 (COP 350,000)</option>
+        </select>
+      </fieldset>
+      <a class="calc-barra" href="#calc-resultado" aria-hidden="true" tabindex="-1"><span>Approximate total</span> <strong data-total-barra>COP 2,420,000</strong> <em>See details ↓</em></a>
+    </div>
+
+    <div id="calc-resultado" class="calc-resultado" aria-live="polite">
+      <p class="hero-card-tag">Approximate total investment</p>
+      <p class="calc-total" data-total>COP 2,420,000</p>
+      <dl class="calc-desglose">
+        <div><dt>Márcalo's fees</dt><dd data-honorarios>COP 1,450,000</dd></div>
+        <div data-fila-descuento hidden><dt>Prior service discount</dt><dd data-descuento></dd></div>
+        <div><dt>SIC official fee <span data-sic-detalle>1 class</span></dt><dd data-sic>COP 970,000</dd></div>
+      </dl>
+      <p class="calc-nota" data-nota>To qualify for the SME fee you must meet the Superintendence's requirements.</p>
+      <a class="btn btn-primary" data-whatsapp href="https://wa.me/573009574511?text=Hi%2C%20I%20want%20to%20register%20my%20trademark" target="_blank" rel="noopener">I want to register my trademark →</a>
+    </div>
+  </form>
+</section>
+
+<section class="section pricing">
   <div class="price-block">
     <h2 class="price-block-title"><span class="price-block-num">1</span> The SIC official fee</h2>
     <p class="price-block-sub">Paid directly to the Superintendence of Industry and Commerce. It depends on whether your company is an SME and on how many classes of goods or services you want to protect.</p>
@@ -124,7 +184,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section section-white">
   <p class="eyebrow center">What changes the price</p>
   <h2 class="center">What makes the investment go up or down</h2>
   <div class="feature-grid">
@@ -151,7 +211,7 @@
   </div>
 </section>
 
-<section class="section section-white">
+<section class="section">
   <p class="eyebrow center">FAQ</p>
   <h2 class="center">About registration costs</h2>
   <div class="faq-list">
@@ -182,6 +242,8 @@
   </div>
 </section>
 
+<script src="/calculadora.js"></script>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-brand">
@@ -209,6 +271,8 @@
 <a class="floating-whatsapp" href="https://wa.me/573009574511?text=Hi%2C%20I%27d%20like%20information%20about%20trademark%20registration%20in%20Colombia" target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
   💬
 </a>
+
+<script src="/animaciones.js"></script>
 <!-- /FOOTER -->
 </body>
 </html>
