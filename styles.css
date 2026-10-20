@@ -334,7 +334,7 @@ h2{ font-size: clamp(1.7rem, 3.2vw, 2.6rem); max-width: 46ch; margin-left:auto; 
   padding: .85rem 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.1);
   background: rgba(255,255,255,.04); color: var(--apricot);
 }
-.quote-form input, .quote-form select, .quote-form textarea{ width: 100%; min-width: 0; }
+.quote-form input:not([type=checkbox]), .quote-form select, .quote-form textarea{ width: 100%; min-width: 0; }
 .quote-form select option{ background: var(--charcoal); }
 .quote-form input:focus, .quote-form select:focus, .quote-form textarea:focus{ outline:none; border-color: var(--gold-green); }
 .quote-form button{ margin-top: .5rem; justify-content:center; }
@@ -648,6 +648,7 @@ a.feature-item, a.step{ display:block; color: inherit; }
 .tipo-marca h4{ font-size: 1rem; margin-bottom: .3rem; }
 .tipo-marca p{ font-size: .86rem; margin: 0; color: var(--text-muted); }
 .tipo-marca .step-tag{ margin-top: .7rem; }
+.section-white .tipo-marca:not(.tipo-marca-comun){ background: var(--apricot); }
 .tipo-marca-comun{ background: var(--lavender-light); border-color: var(--lavender); }
 .tipos-marca + .edu-alert{ margin-top: 2rem; }
 

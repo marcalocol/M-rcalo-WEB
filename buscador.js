@@ -163,7 +163,7 @@
     es: {
       pagar: 'Pagar $120.000 →',
       abriendo: 'Abriendo el pago…',
-      hola: function (d) { return 'Hola, soy ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + '). '; },
+      hola: function (d) { return 'Hola, soy ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + ', correo: ' + d.correo + '). '; },
       pague: function (orden) { return 'Pagué la Búsqueda express (orden ' + orden + ')'; },
       quiero: 'Quiero solicitar la Búsqueda express ($120.000)',
       paraMarca: function (marca) { return ' para la marca "' + marca + '".'; },
@@ -179,13 +179,13 @@
       pendienteTexto: function (orden) { return 'Cuando se confirme empezamos tu búsqueda. Envíanos tus datos por WhatsApp con tu número de orden: ' + orden + '.'; },
       pendienteTag: 'Pago pendiente',
       aprobadoTitulo: 'Ya estamos trabajando en tu Búsqueda express',
-      aprobadoTexto: function (orden) { return 'Tu número de orden es ' + orden + '. Envíanos tus datos por WhatsApp para entregarte los resultados.'; },
+      aprobadoTexto: function (orden) { return 'Tu número de orden es ' + orden + '. Recibirás los resultados en tu correo dentro de las 24 horas siguientes. Si quieres, confírmanos tus datos por WhatsApp.'; },
       aprobadoTag: '¡Pago recibido! ✓'
     },
     en: {
       pagar: 'Pay COP 120,000 →',
       abriendo: 'Opening payment…',
-      hola: function (d) { return 'Hi, I am ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + '). '; },
+      hola: function (d) { return 'Hi, I am ' + d.nombre + ' (WhatsApp: ' + d.whatsapp + ', email: ' + d.correo + '). '; },
       pague: function (orden) { return 'I paid for the Express trademark search (order ' + orden + ')'; },
       quiero: 'I would like to request the Express trademark search (COP 120,000)',
       paraMarca: function (marca) { return ' for the brand "' + marca + '".'; },
@@ -201,7 +201,7 @@
       pendienteTexto: function (orden) { return 'Once it is confirmed we will start your search. Send us your details on WhatsApp with your order number: ' + orden + '.'; },
       pendienteTag: 'Payment pending',
       aprobadoTitulo: 'We are already working on your Express search',
-      aprobadoTexto: function (orden) { return 'Your order number is ' + orden + '. Send us your details on WhatsApp so we can deliver your results.'; },
+      aprobadoTexto: function (orden) { return 'Your order number is ' + orden + '. You will receive your results by email within the next 24 hours. If you like, confirm your details on WhatsApp.'; },
       aprobadoTag: 'Payment received! ✓'
     }
   };
@@ -288,6 +288,7 @@
     var datos = {
       nombre: String(f.get('nombre') || '').trim(),
       whatsapp: String(f.get('whatsapp') || '').trim(),
+      correo: String(f.get('correo') || '').trim(),
       actividad: String(f.get('actividad') || '').trim(),
       marca: ultima.original
     };
@@ -331,7 +332,7 @@
     var estado = (params.get('bold-tx-status') || '').toLowerCase();
     var datos = null;
     try { datos = JSON.parse(sessionStorage.getItem(CLAVE_SOLICITUD) || 'null'); } catch (err) { /* sin almacenamiento */ }
-    datos = datos || { nombre: '', whatsapp: '', actividad: '', marca: '' };
+    datos = datos || { nombre: '', whatsapp: '', correo: '', actividad: '', marca: '' };
     if (datos.marca) {
       inputMarca.value = datos.marca;
       buscar(datos.marca);

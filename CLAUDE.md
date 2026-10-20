@@ -95,11 +95,17 @@ Tipografía (Google Fonts):
 
 - El servicio antes llamado "Diagnóstico 360°" se llama ahora **"Diagnóstico 360° de tu
   marca"** en todo el sitio (textos, planes, términos y mensajes de WhatsApp).
+- En `/registro-de-marca-colombia`, los planes y precios van arriba (justo después de "Más que un
+  trámite"); lo informativo va después.
 - **Diagnósticos legales** (contratos, secretos empresariales, laboral, cobranza,
   protección al consumidor): no muestran precios. Su botón abre WhatsApp
   (`https://wa.me/573009574511`) con un mensaje prellenado **distinto por servicio**.
 - **Solo la Búsqueda express tiene pago en línea (Bold).** Ningún otro servicio usa Bold.
 - La Búsqueda express es **solo fonética** (no incluye búsqueda gráfica de logos o diseños).
+- La Búsqueda express entrega marcas **registradas, en trámite, negadas o canceladas**, y los resultados
+  se envían **al correo registrado dentro de las 24 horas siguientes** al pago (el formulario pide el correo).
+- Las páginas de cada diagnóstico legal **no detallan qué se revisa ni qué se entrega** (depende de cada
+  caso): solo lo general del servicio y la invitación a cotizar por WhatsApp.
 - La tarifa PYME de la SIC aplica a empresas **y a personas naturales** según sus ingresos.
 - El registro tarda **entre 8 y 12 meses** desde la solicitud y termina con una resolución de
   concesión o de negación.

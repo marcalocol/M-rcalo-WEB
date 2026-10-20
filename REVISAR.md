@@ -31,6 +31,13 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
 - [ ] **Términos y condiciones**: agregué que la Búsqueda express cubre solo Colombia y se paga
       con Bold, y un punto nuevo sobre los Diagnósticos legales.
 
+## Búsqueda express: entrega por correo
+
+- [ ] El formulario ahora pide el correo, y el mensaje de WhatsApp lo incluye. Pero el correo solo
+      les llega a ustedes si el cliente envía ese WhatsApp después de pagar (o si Bold lo registra
+      en el pago). Conviene revisar en el panel de Bold si guarda el correo de quien paga; si no,
+      se puede evaluar enviárselo a Bold al abrir el pago.
+
 ## Calculadora de costos
 
 - [ ] Con más de una categoría la calculadora suma la tarifa de la SIC por categoría, pero deja los
