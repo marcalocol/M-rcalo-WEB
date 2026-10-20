@@ -67,8 +67,14 @@ Tipografía (Google Fonts):
 
 ## Idioma y tono
 
-- Español de Colombia (`lang="es-CO"`), tuteo, palabras simples y sin tecnicismos.
+- Español de Colombia (`lang="es-CO"`), tuteo, lenguaje claro.
 - Precios en pesos colombianos con punto de miles: `$120.000`.
+- **No usar frases de relleno** como "sin costos ocultos", "sin letra pequeña", "en palabras
+  simples", "sin tecnicismos" (ni sus versiones en inglés): suenan escritas por una IA.
+- El equipo son **abogadas** (femenino): "una abogada", "nosotras", "tus abogadas".
+- Márcalo **aún no es una sociedad**: no escribir "MARCALO COL SAS" en contenido nuevo.
+- Enfoque: no somos solo un trámite. Somos aliadas estratégicas: para qué sirve la marca, cómo
+  protegerla, cómo posicionarla, qué hace la competencia y qué hacer después del registro.
 
 ## SEO: reglas por página
 
@@ -92,6 +98,10 @@ Tipografía (Google Fonts):
   protección al consumidor): no muestran precios. Su botón abre WhatsApp
   (`https://wa.me/573009574511`) con un mensaje prellenado **distinto por servicio**.
 - **Solo la Búsqueda express tiene pago en línea (Bold).** Ningún otro servicio usa Bold.
+- La Búsqueda express es **solo fonética** (no incluye búsqueda gráfica de logos o diseños).
+- La tarifa PYME de la SIC aplica a empresas **y a personas naturales** según sus ingresos.
+- El registro tarda **entre 8 y 12 meses** desde la solicitud y termina con una resolución de
+  concesión o de negación.
 - La Búsqueda express cubre **solo Colombia** (marcas en la Superintendencia de Industria
   y Comercio, SIC). Decirlo explícitamente donde se ofrezca.
 

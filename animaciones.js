@@ -8,7 +8,7 @@
 
   var SELECTOR = [
     '.section > h2', '.section > .section-sub', '.feature-item', '.step', '.plan-card',
-    '.price-block', '.faq-item', '.camara-card', '.edu-alert', '.discount-box',
+    '.price-block', '.faq-item', '.camara-card', '.tipo-marca', '.edu-alert', '.discount-box',
     '.calc-campos', '.calc-resultado', '.quote-form', '.contenido-texto > p', '.contenido-texto > ul'
   ].join(', ');
 

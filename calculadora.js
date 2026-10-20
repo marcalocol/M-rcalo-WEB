@@ -18,24 +18,24 @@
     es: {
       moneda: function (n) { return '$' + n.toLocaleString('es-CO'); },
       planes: { autonomo: 'Plan Autónomo', equipo: 'Plan En Equipo', blindado: 'Plan Blindado' },
-      tamano: { pyme: 'PYME', nopyme: 'no PYME' },
+      tamano: { pyme: 'tarifa PYME', nopyme: 'tarifa no PYME' },
       categorias: function (n) { return n === 1 ? '1 categoría' : n + ' categorías'; },
       notaVarias: 'Con más de una categoría, los honorarios pueden variar: te confirmamos el valor exacto por WhatsApp.',
-      notaUna: 'Para acceder a la tarifa PYME debes cumplir los requisitos de la Superintendencia.',
+      notaUna: 'La tarifa PYME aplica para empresas y personas naturales según sus ingresos, si cumplen los requisitos de la Superintendencia.',
       mensaje: function (d) {
-        return 'Hola, usé la calculadora de Márcalo: ' + d.plan + ', empresa ' + d.tamano + ', ' + d.categorias +
+        return 'Hola, usé la calculadora de Márcalo: ' + d.plan + ', ' + d.tamano + ', ' + d.categorias +
           '. Inversión total aproximada: ' + d.total + '. Quiero registrar mi marca.';
       }
     },
     en: {
       moneda: function (n) { return 'COP ' + n.toLocaleString('en-US'); },
       planes: { autonomo: 'Self-Service Plan', equipo: 'Team Plan', blindado: 'Shielded Plan' },
-      tamano: { pyme: 'SME', nopyme: 'non-SME' },
+      tamano: { pyme: 'SME fee', nopyme: 'non-SME fee' },
       categorias: function (n) { return n === 1 ? '1 class' : n + ' classes'; },
       notaVarias: 'With more than one class, our fees may vary: we will confirm the exact amount on WhatsApp.',
-      notaUna: 'To qualify for the SME fee you must meet the Superintendence\'s requirements.',
+      notaUna: 'The SME fee applies to companies and individuals based on their income, if they meet the Superintendence\'s requirements.',
       mensaje: function (d) {
-        return 'Hi, I used the Márcalo calculator: ' + d.plan + ', ' + d.tamano + ' company, ' + d.categorias +
+        return 'Hi, I used the Márcalo calculator: ' + d.plan + ', ' + d.tamano + ', ' + d.categorias +
           '. Approximate total investment: ' + d.total + '. I want to register my trademark.';
       }
     }
