@@ -6,10 +6,12 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
 
 - [ ] **Quiénes somos**: reescrito con tus indicaciones (abogadas, sector tecnológico, aliadas
       estratégicas). Si quieren, se pueden agregar nombres, fotos y trayectoria de cada una.
-- [ ] **⚠️ Términos y condiciones y Política de datos** (español e inglés) todavía dicen que el
-      servicio lo presta / el responsable de los datos es "MARCALO COL SAS". Si la sociedad aún no
-      existe, hay que poner quién es el responsable (por ejemplo, el nombre y la cédula de una de
-      ustedes como persona natural). No lo cambié porque es un dato legal que deben definir ustedes.
+- [ ] **⚠️ Términos y condiciones y Política de datos** (español e inglés): dicen provisionalmente
+      "MÁRCALO S.A.S.". Cuando constituyas la empresa, actualiza el nombre exacto (y el NIT si
+      quieres incluirlo). Mientras la sociedad no exista, conviene confirmar con quien te asesore
+      quién figura como responsable del tratamiento de datos.
+- [ ] **Registro internacional**: pregunta frecuente en la página de registro de marca sobre el
+      Sistema de Madrid (Protocolo de Madrid).
 - [ ] **Los 5 diagnósticos legales**: qué se revisa, señales de que lo necesitas y preguntas
       frecuentes. Confirma que el alcance corresponde a lo que realmente ofrecen.
       - ¿Redactan contratos nuevos? ¿Hacen el cobro de cartera? (las páginas dicen "te proponemos").

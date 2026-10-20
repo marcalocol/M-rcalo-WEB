@@ -1,6 +1,6 @@
 # Márcalo — guía para trabajar en este repositorio
 
-Sitio de Márcalo (MARCALO COL SAS): registro y protección de marcas en Colombia.
+Sitio de Márcalo: registro y protección de marcas en Colombia.
 Desplegado en Vercel desde GitHub.
 
 ## Reglas de Git
@@ -72,7 +72,8 @@ Tipografía (Google Fonts):
 - **No usar frases de relleno** como "sin costos ocultos", "sin letra pequeña", "en palabras
   simples", "sin tecnicismos" (ni sus versiones en inglés): suenan escritas por una IA.
 - El equipo son **abogadas** (femenino): "una abogada", "nosotras", "tus abogadas".
-- Márcalo **aún no es una sociedad**: no escribir "MARCALO COL SAS" en contenido nuevo.
+- Márcalo **aún no es una sociedad**. En términos y política de datos aparece provisionalmente
+  como "MÁRCALO S.A.S."; actualizarlo cuando se constituya la empresa. No usar el nombre en otras páginas.
 - Enfoque: no somos solo un trámite. Somos aliadas estratégicas: para qué sirve la marca, cómo
   protegerla, cómo posicionarla, qué hace la competencia y qué hacer después del registro.
 
