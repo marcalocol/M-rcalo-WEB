@@ -52,7 +52,7 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
 
 ## Pendientes técnicos
 
-- [ ] `favicon.ico` no existe (ya no existía antes); las páginas lo piden y da 404.
+- [x] Favicon: hecho con la "m" del logo sobre fondo carbón (`favicon.ico`, `images/icon-192.png`, `images/apple-touch-icon.png`).
 - [ ] `og-marcalo.png` es provisional (logo sobre fondo apricot).
 - [ ] Probar en el preview de Vercel: URLs limpias, redirecciones (que `/buscador.html?...`
       conserve los parámetros) y un pago real o de prueba con Bold, en español y en inglés.
