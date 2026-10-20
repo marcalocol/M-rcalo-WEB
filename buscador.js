@@ -301,7 +301,7 @@
       .then(function (o) {
         if (typeof window.BoldCheckout !== 'function') throw new Error('bold');
         try { sessionStorage.setItem(CLAVE_SOLICITUD, JSON.stringify(datos)); } catch (err) { /* sin almacenamiento */ }
-        var checkout = new window.BoldCheckout({
+        var config = {
           orderId: o.orderId,
           currency: o.currency,
           amount: o.amount,
@@ -310,7 +310,16 @@
           description: o.description,
           // Bold devuelve al usuario a esta misma página (en español o en inglés).
           redirectionUrl: window.location.origin + window.location.pathname
-        });
+        };
+        // El correo y el nombre quedan registrados en el pago de Bold (así llegan aunque no escriban por WhatsApp).
+        var checkout;
+        try {
+          checkout = new window.BoldCheckout(Object.assign({}, config, {
+            customerData: JSON.stringify({ email: datos.correo, fullName: datos.nombre })
+          }));
+        } catch (err) {
+          checkout = new window.BoldCheckout(config);
+        }
         checkout.open();
         botonPagar.disabled = false;
         botonPagar.textContent = T.pagar;

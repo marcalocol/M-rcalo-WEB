@@ -126,6 +126,8 @@ Tipografía (Google Fonts):
   a la búsqueda en su idioma. Si la página cambia de URL, dejar una redirección 301 desde la
   anterior (como `/buscador.html` → `/busqueda-de-marca-express`) para los pagos en curso.
 - Los textos de `buscador.js` están en el objeto `TEXTOS` (`es` / `en`), según `<html lang>`.
+- `buscador.js` envía a Bold `customerData` (JSON con `email` y `fullName` del formulario) para que el
+  correo quede registrado en el pago. Si Bold rechazara ese campo, abre el pago sin él.
 
 ## Movimiento y calculadora
 
