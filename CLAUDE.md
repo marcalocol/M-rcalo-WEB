@@ -23,6 +23,10 @@ Desplegado en Vercel desde GitHub.
   1. `node scripts/sincronizar.mjs`: copia header/footer, genera canonical, hreflang y Open Graph
      desde el `<title>` y la meta description, y valida las reglas SEO (falla si algo no cumple).
   2. `node scripts/generar-sitemap.mjs`: regenera `sitemap.xml` con hreflang.
+- `sincronizar.mjs` también genera los datos estructurados (JSON-LD de schema.org): `LegalService` en
+  el inicio, `BreadcrumbList` desde `<nav class="migas">` y `FAQPage` desde los `<details class="faq-item">`
+  (cada uno con `<summary>` y un solo `<p>` de respuesta). No escribirlos a mano en las páginas.
+- El header usa `images/logo-header.png` (versión liviana); `images/logo.png` se usa para Open Graph y schema.
 - Los scripts son Node sin dependencias y se corren solo en local; Vercel no ejecuta ningún build.
   `.vercelignore` evita publicar `CLAUDE.md`, `REVISAR.md`, `paginas.json`, `parciales/` y `scripts/`.
 - No crear `package.json` (haría que Vercel intente compilar el sitio).
