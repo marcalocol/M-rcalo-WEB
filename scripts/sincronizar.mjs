@@ -51,7 +51,9 @@ function bloqueSeo(pagina, idioma, titulo, descripcion) {
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
     `<meta property="og:image:alt" content="Márcalo" />`,
-    `<meta name="twitter:card" content="summary_large_image" />`
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png" />`,
+    `<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />`
   ].join('\n');
 }
 
