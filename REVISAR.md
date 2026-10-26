@@ -64,4 +64,4 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
 - [ ] `og-marcalo.png` es provisional (logo sobre fondo apricot).
 - [ ] Probar en el preview de Vercel: URLs limpias, redirecciones (que `/buscador.html?...`
       conserve los parámetros) y un pago real o de prueba con Bold, en español y en inglés.
-- [ ] Después de publicar: enviar `https://marcalocol.com/sitemap.xml` en Google Search Console.
+- [ ] Después de publicar: enviar `https://www.marcalocol.com/sitemap.xml` en Google Search Console.

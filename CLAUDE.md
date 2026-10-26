@@ -91,7 +91,7 @@ Tipografía (Google Fonts):
 - Cada página tiene su propio:
   - `<title>`
   - `<meta name="description">` de **máximo 155 caracteres**
-  - `<link rel="canonical">` con la URL absoluta definitiva (`https://marcalocol.com/...`)
+  - `<link rel="canonical">` con la URL absoluta definitiva (`https://www.marcalocol.com/...`; el dominio principal en Vercel es con www)
   - Open Graph: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`,
     `og:locale` (`es_CO` / `en_US`) y `og:site_name`
   - `hreflang` hacia su equivalente en el otro idioma (ver abajo)
