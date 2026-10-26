@@ -23,6 +23,12 @@ Desplegado en Vercel desde GitHub.
   1. `node scripts/sincronizar.mjs`: copia header/footer, genera canonical, hreflang y Open Graph
      desde el `<title>` y la meta description, y valida las reglas SEO (falla si algo no cumple).
   2. `node scripts/generar-sitemap.mjs`: regenera `sitemap.xml` con hreflang.
+- `sincronizar.mjs` también genera los datos estructurados (JSON-LD de schema.org): `LegalService` en
+  el inicio, `BreadcrumbList` desde `<nav class="migas">` y `FAQPage` desde los `<details class="faq-item">`
+  (cada uno con `<summary>` y un solo `<p>` de respuesta). No escribirlos a mano en las páginas.
+- `sincronizar.mjs` también inserta en todas las páginas la etiqueta de Google (Google Ads,
+  `ETIQUETA_GOOGLE = 'AW-18531135936'`). No pegarla a mano en las páginas.
+- El header usa `images/logo-header.png` (versión liviana); `images/logo.png` se usa para Open Graph y schema.
 - Los scripts son Node sin dependencias y se corren solo en local; Vercel no ejecuta ningún build.
   `.vercelignore` evita publicar `CLAUDE.md`, `REVISAR.md`, `paginas.json`, `parciales/` y `scripts/`.
 - No crear `package.json` (haría que Vercel intente compilar el sitio).
@@ -85,7 +91,7 @@ Tipografía (Google Fonts):
 - Cada página tiene su propio:
   - `<title>`
   - `<meta name="description">` de **máximo 155 caracteres**
-  - `<link rel="canonical">` con la URL absoluta definitiva (`https://marcalocol.com/...`)
+  - `<link rel="canonical">` con la URL absoluta definitiva (`https://www.marcalocol.com/...`; el dominio principal en Vercel es con www)
   - Open Graph: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`,
     `og:locale` (`es_CO` / `en_US`) y `og:site_name`
   - `hreflang` hacia su equivalente en el otro idioma (ver abajo)

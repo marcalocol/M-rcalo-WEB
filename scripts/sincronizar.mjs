@@ -16,6 +16,8 @@ const MAX_DESCRIPCION = 155;
 const IMAGEN_OG = urlAbsoluta('/images/og-marcalo.png');
 const LANG = { es: 'es-CO', en: 'en' };
 const LOCALE = { es: 'es_CO', en: 'en_US' };
+// Etiqueta de Google (Google Ads). Se carga en todas las páginas.
+const ETIQUETA_GOOGLE = 'AW-18531135936';
 
 const parciales = {};
 for (const idioma of IDIOMAS) {
@@ -33,7 +35,70 @@ function textoPlano(html) {
   return html.replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'");
 }
 
-function bloqueSeo(pagina, idioma, titulo, descripcion) {
+// ---------- Datos estructurados (schema.org, JSON-LD) ----------
+// Se generan a partir del HTML de cada página: la ficha de Márcalo en el inicio,
+// las migas de pan (<nav class="migas">) y las preguntas frecuentes (<details class="faq-item">).
+const NEGOCIO = {
+  es: 'Abogadas en propiedad intelectual y derecho empresarial. Registro y estrategia de marca en Colombia, y diagnósticos legales para empresas.',
+  en: 'Women lawyers in intellectual property and business law. Trademark registration and brand strategy in Colombia, and legal assessments for companies.'
+};
+
+function jsonLd(objeto) {
+  // "<" escapado para que el JSON nunca cierre el <script> por accidente.
+  return `<script type="application/ld+json">${JSON.stringify(objeto).replace(/</g, '\\u003c')}</script>`;
+}
+
+function textoDeHtml(html) {
+  return textoPlano(html.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+}
+
+function datosEstructurados(pagina, idioma, html) {
+  const bloques = [];
+  if (pagina.seccion === 'inicio') {
+    bloques.push({
+      '@context': 'https://schema.org',
+      '@type': 'LegalService',
+      '@id': urlAbsoluta('/') + '#marcalo',
+      name: 'Márcalo',
+      url: urlAbsoluta(pagina[idioma]),
+      logo: urlAbsoluta('/images/logo.png'),
+      image: IMAGEN_OG,
+      description: NEGOCIO[idioma],
+      telephone: '+57 300 957 4511',
+      email: 'contacto_@marcalocol.com',
+      address: { '@type': 'PostalAddress', addressLocality: 'Bogotá', addressCountry: 'CO' },
+      areaServed: { '@type': 'Country', name: 'Colombia' },
+      availableLanguage: ['es', 'en'],
+      sameAs: ['https://instagram.com/marcalo_col']
+    });
+  }
+  const migas = html.match(/<nav class="migas"[^>]*>([\s\S]*?)<\/nav>/);
+  if (migas) {
+    const items = [];
+    const patron = /<a href="([^"]+)">([\s\S]*?)<\/a>|<span aria-current="page">([\s\S]*?)<\/span>/g;
+    let m;
+    while ((m = patron.exec(migas[1]))) {
+      items.push({ nombre: textoDeHtml(m[2] || m[3]), url: m[1] ? urlAbsoluta(m[1]) : urlAbsoluta(pagina[idioma]) });
+    }
+    bloques.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.nombre, item: it.url }))
+    });
+  }
+  const preguntas = [];
+  const patronFaq = /<details class="faq-item"[^>]*>\s*<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>/g;
+  let f;
+  while ((f = patronFaq.exec(html))) {
+    preguntas.push({ '@type': 'Question', name: textoDeHtml(f[1]), acceptedAnswer: { '@type': 'Answer', text: textoDeHtml(f[2]) } });
+  }
+  if (preguntas.length) {
+    bloques.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: preguntas });
+  }
+  return bloques.map(jsonLd);
+}
+
+function bloqueSeo(pagina, idioma, titulo, descripcion, html) {
   const otro = idioma === 'es' ? 'en' : 'es';
   return [
     `<link rel="canonical" href="${urlAbsoluta(pagina[idioma])}" />`,
@@ -53,7 +118,12 @@ function bloqueSeo(pagina, idioma, titulo, descripcion) {
     `<meta property="og:image:alt" content="Márcalo" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png" />`,
-    `<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />`
+    `<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />`,
+    `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`,
+    ...datosEstructurados(pagina, idioma, html),
+    `<!-- Google tag (gtag.js) -->`,
+    `<script async src="https://www.googletagmanager.com/gtag/js?id=${ETIQUETA_GOOGLE}"></script>`,
+    `<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ETIQUETA_GOOGLE}');</script>`
   ].join('\n');
 }
 
@@ -108,7 +178,7 @@ for (const pagina of paginas) {
 
     let html = original;
     if (titulo && descripcion) {
-      html = reemplazarBloque(html, 'SEO', bloqueSeo(pagina, idioma, textoPlano(titulo), textoPlano(descripcion)), errores);
+      html = reemplazarBloque(html, 'SEO', bloqueSeo(pagina, idioma, textoPlano(titulo), textoPlano(descripcion), original), errores);
     }
     html = reemplazarBloque(html, 'HEADER', header(idioma, pagina), errores);
     html = reemplazarBloque(html, 'FOOTER', parciales[idioma].footer, errores);

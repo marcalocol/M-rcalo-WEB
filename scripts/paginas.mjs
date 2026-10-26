@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-export const SITIO = 'https://marcalocol.com';
+export const SITIO = 'https://www.marcalocol.com';
 export const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const IDIOMAS = ['es', 'en'];
 
