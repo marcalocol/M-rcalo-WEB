@@ -16,6 +16,8 @@ const MAX_DESCRIPCION = 155;
 const IMAGEN_OG = urlAbsoluta('/images/og-marcalo.png');
 const LANG = { es: 'es-CO', en: 'en' };
 const LOCALE = { es: 'es_CO', en: 'en_US' };
+// Etiqueta de Google (Google Ads). Se carga en todas las páginas.
+const ETIQUETA_GOOGLE = 'AW-18531135936';
 
 const parciales = {};
 for (const idioma of IDIOMAS) {
@@ -118,7 +120,10 @@ function bloqueSeo(pagina, idioma, titulo, descripcion, html) {
     `<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png" />`,
     `<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />`,
     `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`,
-    ...datosEstructurados(pagina, idioma, html)
+    ...datosEstructurados(pagina, idioma, html),
+    `<!-- Google tag (gtag.js) -->`,
+    `<script async src="https://www.googletagmanager.com/gtag/js?id=${ETIQUETA_GOOGLE}"></script>`,
+    `<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ETIQUETA_GOOGLE}');</script>`
   ].join('\n');
 }
 

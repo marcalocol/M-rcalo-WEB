@@ -37,6 +37,14 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
       **Probar en el preview de Vercel**: hacer un pago de prueba y verificar en el panel de Bold
       que la transacción muestra el correo, y que la ventana de pago abre sin errores.
 
+## Google Ads
+
+- [ ] La etiqueta AW-18531135936 usa cookies de Google para medir. Conviene mencionar en la
+      Política de tratamiento de datos que el sitio usa cookies de Google para medición y
+      publicidad (puedo redactar el párrafo si me lo pides).
+- [ ] Faltan las conversiones (pago de la búsqueda express, clics en WhatsApp): cuando Google Ads
+      entregue el "fragmento de evento" de cada conversión, se agregan al sitio.
+
 ## Calculadora de costos
 
 - [ ] Con más de una categoría la calculadora suma la tarifa de la SIC por categoría, pero deja los
