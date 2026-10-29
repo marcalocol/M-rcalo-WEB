@@ -156,7 +156,7 @@
   if (typeof document === 'undefined') return;
 
   var WHATSAPP = '573009574511';
-  // Conversión "Compra" de Google Ads: se registra solo cuando Bold devuelve el pago aprobado.
+  // Conversión "Compra" de Google Ads y evento Purchase de Meta: solo cuando Bold devuelve el pago aprobado.
   var CONVERSION_COMPRA = 'AW-18531135936/LIY8CIztwq4dEMDjqoRF';
   var VALOR_COMPRA = 120000;
   var F = window.MarcaloFonetica;
@@ -340,13 +340,18 @@
   // El número de orden de Bold va como transaction_id: si la persona recarga la página,
   // Google Ads no cuenta la misma compra dos veces.
   function registrarCompra(orden) {
-    if (typeof window.gtag !== 'function') return;
-    window.gtag('event', 'conversion', {
-      send_to: CONVERSION_COMPRA,
-      value: VALOR_COMPRA,
-      currency: 'COP',
-      transaction_id: orden
-    });
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: CONVERSION_COMPRA,
+        value: VALOR_COMPRA,
+        currency: 'COP',
+        transaction_id: orden
+      });
+    }
+    // Píxel de Meta: el eventID evita que la misma compra se cuente dos veces.
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Purchase', { value: VALOR_COMPRA, currency: 'COP' }, { eventID: orden });
+    }
   }
 
   // Regreso desde Bold después del pago.

@@ -39,9 +39,10 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
 
 ## Google Ads
 
-- [ ] La etiqueta AW-18531135936 usa cookies de Google para medir. Conviene mencionar en la
-      Política de tratamiento de datos que el sitio usa cookies de Google para medición y
-      publicidad (puedo redactar el párrafo si me lo pides).
+- [ ] Revisar la nueva sección 9 de la Política de tratamiento de datos ("Cookies y herramientas
+      de medición", español e inglés), que informa el uso de cookies de Google y Meta.
+- [ ] Meta: después de publicar, revisar en el Administrador de eventos que lleguen PageView y,
+      tras un pago real, Purchase.
 - [x] Conversión "Compra" conectada al pago aprobado de Bold.
 - [ ] Hacer un pago real y confirmar en Google Ads (Objetivos → Conversiones) que la conversión
       "Compra" aparece (puede tardar hasta 24 horas). Se asume que Bold devuelve el estado
