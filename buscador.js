@@ -156,6 +156,9 @@
   if (typeof document === 'undefined') return;
 
   var WHATSAPP = '573009574511';
+  // Conversión "Compra" de Google Ads: se registra solo cuando Bold devuelve el pago aprobado.
+  var CONVERSION_COMPRA = 'AW-18531135936/LIY8CIztwq4dEMDjqoRF';
+  var VALOR_COMPRA = 120000;
   var F = window.MarcaloFonetica;
 
   // Textos de la interfaz según el idioma de la página (<html lang>).
@@ -334,6 +337,18 @@
       });
   });
 
+  // El número de orden de Bold va como transaction_id: si la persona recarga la página,
+  // Google Ads no cuenta la misma compra dos veces.
+  function registrarCompra(orden) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', {
+      send_to: CONVERSION_COMPRA,
+      value: VALOR_COMPRA,
+      currency: 'COP',
+      transaction_id: orden
+    });
+  }
+
   // Regreso desde Bold después del pago.
   var params = new URLSearchParams(window.location.search);
   var orden = params.get('bold-order-id');
@@ -353,6 +368,7 @@
       mostrarGracias(T.pendienteTitulo, T.pendienteTexto(orden), linkWa(mensajeWhatsApp(datos, orden)), T.pendienteTag);
     } else {
       try { sessionStorage.removeItem(CLAVE_SOLICITUD); } catch (err) { /* sin almacenamiento */ }
+      if (estado === 'approved') registrarCompra(orden);
       mostrarGracias(T.aprobadoTitulo, T.aprobadoTexto(orden), linkWa(mensajeWhatsApp(datos, orden)), T.aprobadoTag);
     }
   }

@@ -42,8 +42,11 @@ Todo el contenido nuevo es un **borrador**. Antes de publicar, revisa especialme
 - [ ] La etiqueta AW-18531135936 usa cookies de Google para medir. Conviene mencionar en la
       Política de tratamiento de datos que el sitio usa cookies de Google para medición y
       publicidad (puedo redactar el párrafo si me lo pides).
-- [ ] Faltan las conversiones (pago de la búsqueda express, clics en WhatsApp): cuando Google Ads
-      entregue el "fragmento de evento" de cada conversión, se agregan al sitio.
+- [x] Conversión "Compra" conectada al pago aprobado de Bold.
+- [ ] Hacer un pago real y confirmar en Google Ads (Objetivos → Conversiones) que la conversión
+      "Compra" aparece (puede tardar hasta 24 horas). Se asume que Bold devuelve el estado
+      "approved"; si no aparece, revisar el valor de bold-tx-status en la URL de regreso.
+- [ ] (Opcional) Crear la conversión "Clic en WhatsApp" y conectar su fragmento.
 
 ## Calculadora de costos
 

@@ -134,6 +134,8 @@ Tipografía (Google Fonts):
 - Los textos de `buscador.js` están en el objeto `TEXTOS` (`es` / `en`), según `<html lang>`.
 - `buscador.js` envía a Bold `customerData` (JSON con `email` y `fullName` del formulario) para que el
   correo quede registrado en el pago. Si Bold rechazara ese campo, abre el pago sin él.
+- Conversión "Compra" de Google Ads (`CONVERSION_COMPRA` en `buscador.js`): se registra solo cuando Bold
+  devuelve `bold-tx-status=approved`, con valor 120000 COP y el `bold-order-id` como `transaction_id`.
 
 ## Movimiento y calculadora
 
