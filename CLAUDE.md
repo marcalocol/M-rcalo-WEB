@@ -27,7 +27,8 @@ Desplegado en Vercel desde GitHub.
   el inicio, `BreadcrumbList` desde `<nav class="migas">` y `FAQPage` desde los `<details class="faq-item">`
   (cada uno con `<summary>` y un solo `<p>` de respuesta). No escribirlos a mano en las páginas.
 - `sincronizar.mjs` también inserta en todas las páginas la etiqueta de Google (Google Ads,
-  `ETIQUETA_GOOGLE = 'AW-18531135936'`). No pegarla a mano en las páginas.
+  `ETIQUETA_GOOGLE = 'AW-18531135936'`) y el píxel de Meta (`PIXEL_META = '1423928953201631'`).
+  No pegarlos a mano en las páginas.
 - El header usa `images/logo-header.png` (versión liviana); `images/logo.png` se usa para Open Graph y schema.
 - Los scripts son Node sin dependencias y se corren solo en local; Vercel no ejecuta ningún build.
   `.vercelignore` evita publicar `CLAUDE.md`, `REVISAR.md`, `paginas.json`, `parciales/` y `scripts/`.
@@ -136,6 +137,8 @@ Tipografía (Google Fonts):
   correo quede registrado en el pago. Si Bold rechazara ese campo, abre el pago sin él.
 - Conversión "Compra" de Google Ads (`CONVERSION_COMPRA` en `buscador.js`): se registra solo cuando Bold
   devuelve `bold-tx-status=approved`, con valor 120000 COP y el `bold-order-id` como `transaction_id`.
+  En ese mismo momento se envía el evento `Purchase` del píxel de Meta, con el `bold-order-id` como `eventID`.
+- La Política de tratamiento de datos (sección 9) informa el uso de cookies de Google y Meta.
 
 ## Movimiento y calculadora
 
