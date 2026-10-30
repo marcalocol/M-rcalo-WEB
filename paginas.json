@@ -14,5 +14,6 @@
   { "seccion": "diagnosticos", "es": "/diagnosticos-legales/proteccion-al-consumidor", "en": "/en/legal-assessments/consumer-protection" },
   { "seccion": "nosotros",     "es": "/quienes-somos",                               "en": "/en/about-us" },
   { "seccion": "legal",        "es": "/terminos-y-condiciones",                      "en": "/en/terms-and-conditions" },
-  { "seccion": "legal",        "es": "/politica-de-tratamiento-de-datos",            "en": "/en/privacy-policy" }
+  { "seccion": "legal",        "es": "/politica-de-tratamiento-de-datos",            "en": "/en/privacy-policy" },
+  { "seccion": "legal",        "es": "/contrato-de-servicios",                       "oculta": true }
 ]

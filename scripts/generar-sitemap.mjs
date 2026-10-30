@@ -5,6 +5,7 @@
 //
 // La fecha <lastmod> de cada URL es la del último commit que tocó su archivo
 // (o la de hoy, si el archivo todavía no tiene commits).
+// Las páginas con "oculta": true en paginas.json no entran al sitemap.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -20,6 +21,7 @@ function ultimaModificacion(archivo) {
 
 const urls = [];
 for (const pagina of paginas) {
+  if (pagina.oculta) continue;
   const alternas = [
     `    <xhtml:link rel="alternate" hreflang="es-CO" href="${urlAbsoluta(pagina.es)}" />`,
     `    <xhtml:link rel="alternate" hreflang="en" href="${urlAbsoluta(pagina.en)}" />`,
