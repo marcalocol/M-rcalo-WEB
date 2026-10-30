@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    { "source": "/contrato-de-servicios", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive, nosnippet" }] }
+  ],
   "redirects": [
     { "source": "/buscador.html", "destination": "/busqueda-de-marca-express", "permanent": true },
     { "source": "/buscador", "destination": "/busqueda-de-marca-express", "permanent": true },

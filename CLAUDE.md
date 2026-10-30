@@ -15,6 +15,10 @@ Desplegado en Vercel desde GitHub.
   `/a` → `a.html`, `/a/b` → `a/b.html`, `/` → `index.html`, `/en` → `en/index.html`.
 - `paginas.json` es la lista de páginas: cada fila une una URL en español con su equivalente en inglés.
   Al crear una página, agregarla ahí.
+- Páginas ocultas: una fila con `"oculta": true` en `paginas.json` (puede tener solo `es`). No entran al
+  sitemap, no llevan canonical, hreflang ni Open Graph, llevan `noindex` y no se enlazan desde el sitio.
+  Hoy: `/contrato-de-servicios` (el contrato que los clientes aceptan en el formulario de contratación;
+  `vercel.json` le agrega además el encabezado `X-Robots-Tag: noindex`).
 - El header y el footer se editan solo en `parciales/` (`header.es.html`, `header.en.html`,
   `footer.es.html`, `footer.en.html`). Nunca directamente en las páginas.
 - Cada página lleva los marcadores `<!-- SEO --><!-- /SEO -->` (en el `<head>`, después de la meta

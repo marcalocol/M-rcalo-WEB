@@ -8,6 +8,8 @@
 //   <!-- HEADER --><!-- /HEADER -->   donde va el <header>
 //   <!-- FOOTER --><!-- /FOOTER -->   donde va el <footer>
 // El canonical, los hreflang y el Open Graph se arman con el <title> y la meta description de la página.
+// Las páginas con "oculta": true en paginas.json (p. ej. el contrato que se acepta en un formulario)
+// pueden existir en un solo idioma, no llevan canonical, hreflang ni Open Graph, y llevan noindex.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { paginas, IDIOMAS, RAIZ, archivoDe, urlAbsoluta } from './paginas.mjs';
@@ -100,6 +102,32 @@ function datosEstructurados(pagina, idioma, html) {
   return bloques.map(jsonLd);
 }
 
+function etiquetasComunes() {
+  return [
+    `<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png" />`,
+    `<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />`,
+    `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`
+  ];
+}
+
+function etiquetasMedicion() {
+  return [
+    `<!-- Google tag (gtag.js) -->`,
+    `<script async src="https://www.googletagmanager.com/gtag/js?id=${ETIQUETA_GOOGLE}"></script>`,
+    `<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ETIQUETA_GOOGLE}');</script>`,
+    `<!-- Meta Pixel Code -->`,
+    `<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '${PIXEL_META}'); fbq('track', 'PageView');</script>`
+  ];
+}
+
+function bloqueSeoOculta() {
+  return [
+    `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />`,
+    ...etiquetasComunes(),
+    ...etiquetasMedicion()
+  ].join('\n');
+}
+
 function bloqueSeo(pagina, idioma, titulo, descripcion, html) {
   const otro = idioma === 'es' ? 'en' : 'es';
   return [
@@ -119,15 +147,9 @@ function bloqueSeo(pagina, idioma, titulo, descripcion, html) {
     `<meta property="og:image:height" content="630" />`,
     `<meta property="og:image:alt" content="Márcalo" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
-    `<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png" />`,
-    `<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />`,
-    `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`,
+    ...etiquetasComunes(),
     ...datosEstructurados(pagina, idioma, html),
-    `<!-- Google tag (gtag.js) -->`,
-    `<script async src="https://www.googletagmanager.com/gtag/js?id=${ETIQUETA_GOOGLE}"></script>`,
-    `<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ETIQUETA_GOOGLE}');</script>`,
-    `<!-- Meta Pixel Code -->`,
-    `<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '${PIXEL_META}'); fbq('track', 'PageView');</script>`
+    ...etiquetasMedicion()
   ].join('\n');
 }
 
@@ -143,7 +165,7 @@ function reemplazarBloque(html, nombre, contenido, errores) {
 function header(idioma, pagina) {
   const otro = idioma === 'es' ? 'en' : 'es';
   return parciales[idioma].header
-    .replace('{{URL_OTRO_IDIOMA}}', pagina[otro])
+    .replace('{{URL_OTRO_IDIOMA}}', pagina[otro] || (otro === 'en' ? '/en' : '/'))
     .replace(new RegExp(`data-seccion="${pagina.seccion}"`, 'g'), `data-seccion="${pagina.seccion}" aria-current="page"`);
 }
 
@@ -153,6 +175,13 @@ const vistas = new Map();
 
 for (const pagina of paginas) {
   for (const idioma of IDIOMAS) {
+    if (!pagina[idioma]) {
+      if (!pagina.oculta) {
+        console.error(`✗ paginas.json: ${pagina.es || pagina.en} no tiene versión "${idioma}"`);
+        hayErrores = true;
+      }
+      continue;
+    }
     const archivo = archivoDe(pagina[idioma]);
     const ruta = join(RAIZ, archivo);
     const errores = [];
@@ -173,15 +202,18 @@ for (const pagina of paginas) {
     const h1 = (original.match(/<h1[\s>]/g) || []).length;
 
     if (!titulo) errores.push('falta <title>');
-    if (!descripcion) errores.push('falta <meta name="description">');
-    else if ([...textoPlano(descripcion)].length > MAX_DESCRIPCION) {
+    if (!descripcion) {
+      if (!pagina.oculta) errores.push('falta <meta name="description">');
+    } else if ([...textoPlano(descripcion)].length > MAX_DESCRIPCION) {
       errores.push(`la meta description tiene ${[...textoPlano(descripcion)].length} caracteres (máximo ${MAX_DESCRIPCION})`);
     }
     if (lang !== LANG[idioma]) errores.push(`<html lang="${lang}"> debería ser "${LANG[idioma]}"`);
     if (h1 !== 1) errores.push(`tiene ${h1} <h1> (debe tener exactamente 1)`);
 
     let html = original;
-    if (titulo && descripcion) {
+    if (pagina.oculta) {
+      html = reemplazarBloque(html, 'SEO', bloqueSeoOculta(), errores);
+    } else if (titulo && descripcion) {
       html = reemplazarBloque(html, 'SEO', bloqueSeo(pagina, idioma, textoPlano(titulo), textoPlano(descripcion), original), errores);
     }
     html = reemplazarBloque(html, 'HEADER', header(idioma, pagina), errores);
